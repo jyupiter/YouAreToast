@@ -10,10 +10,13 @@ public class Customer : MonoBehaviour
 
     private float randomPatience = 0;
     private string customerName = "";
-    private string sprite = "";
-    //TODO: make sprite actually sprite(s) and not a string
-
+    private string sprite = ""; //TODO: make sprite actually sprite(s) and not a string
     private Order order;
+
+    private delegate void Notify(string message);
+    private event Notify NotificationEvent;
+
+    #region constructors
 
     public Customer()
     {
@@ -26,6 +29,8 @@ public class Customer : MonoBehaviour
         SetSprite(sprite);
         SetOrder(order);
     }
+
+    #endregion
 
     #region getters
 
@@ -63,6 +68,9 @@ public class Customer : MonoBehaviour
         this.order = order;
     }
 
+    //TODO: make patience actually do things
+    public void SetPatience() { }
+
     #endregion
 
     public static Customer GenerateCustomer()
@@ -80,7 +88,4 @@ public class Customer : MonoBehaviour
 
         return new Customer(name, sprite, Order.GenerateOrder());
     }
-
-    //TODO: make patience actually do things
-    public void SetPatience() { }
 }
