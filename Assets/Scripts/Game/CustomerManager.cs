@@ -45,7 +45,8 @@ public class CustomerManager : MonoBehaviour
         Customer c = ChooseNextCustomer();
         currentCustomer = c;
 
-        string sprite = c.GetSprite();
+        List<int> spritesToUse = c.GetSpritesToUse();
+        List<Sprite> spritesToAssign = Customer.IntsToSprites(c.GetSpritesToUse(), FileIO.GetSpriteLists());
         //assign sprites to customer prefab
         //make customer prefab visible
         hasCustomer = true;

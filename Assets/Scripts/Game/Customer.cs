@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Customer : MonoBehaviour
+public class Customer
 {
     // variables
     [SerializeField] private int minPatience = 30;
@@ -10,8 +10,18 @@ public class Customer : MonoBehaviour
 
     private float randomPatience = 0;
     private string customerName = "";
-    private string sprite = ""; //TODO: make sprite actually sprite(s) and not a string
     private Order order;
+
+    private List<int> spritesToUse =
+        new List<int>
+        {
+            0, // base
+            0, // face (happy -> impatient -> upset)
+            0, // glasses
+            0, // hair
+            0, // teeth
+            0  // tie
+        };
 
     private delegate void Notify(string message);
     private event Notify NotificationEvent;
@@ -23,10 +33,10 @@ public class Customer : MonoBehaviour
         order = null;
     }
 
-    public Customer(string customerName, string sprite, Order order)
+    public Customer(string customerName, List<int> spritesToUse, Order order)
     {
         SetCustomerName(customerName);
-        SetSprite(sprite);
+        SetSpritesToUse(spritesToUse);
         SetOrder(order);
     }
 
@@ -39,9 +49,9 @@ public class Customer : MonoBehaviour
         return customerName;
     }
 
-    public string GetSprite()
+    public List<int> GetSpritesToUse()
     {
-        return sprite;
+        return spritesToUse;
     }
 
     public Order GetOrder()
@@ -58,9 +68,9 @@ public class Customer : MonoBehaviour
         this.customerName = customerName;
     }
 
-    public void SetSprite(string sprite)
+    public void SetSpritesToUse(List<int> spritesToUse)
     {
-        this.sprite = sprite;
+        this.spritesToUse = spritesToUse;
     }
 
     public void SetOrder(Order order)
@@ -76,16 +86,37 @@ public class Customer : MonoBehaviour
     public static Customer GenerateCustomer()
     {
         List<string> names = FileIO.GetNameList();
-        List<string> sprites = FileIO.GetSpriteList();
+        List<Sprite[]> sprites = FileIO.GetSpriteLists();
 
         //randomly choose name
         int randomValue = GameController.r.Next(0, names.Count);
         string name = names[randomValue];
 
-        //randomly choose sprite
-        randomValue = GameController.r.Next(0, sprites.Count);
-        string sprite = sprites[randomValue];
+        return new Customer(name, GenerateAppearance(sprites), Order.GenerateOrder());
+    }
 
-        return new Customer(name, sprite, Order.GenerateOrder());
+    private static List<int> GenerateAppearance(List<Sprite[]> sprites)
+    {
+        List<int> temp = new List<int> { 0, 0, 0, 0, 0, 0 };
+
+        for(int i = 0; i < sprites.Count; i++)
+            temp[i] = GameController.r.Next(0, sprites[i].Length);
+
+        return temp;
+    }
+
+    public static List<Sprite> IntsToSprites(List<int> spritesToUse, List<Sprite[]> sprites)
+    {
+        List<Sprite> temp = new List<Sprite>
+        {
+            sprites[0][spritesToUse[0]],
+            sprites[1][spritesToUse[1]],
+            sprites[2][spritesToUse[2]],
+            sprites[3][spritesToUse[3]],
+            sprites[4][spritesToUse[4]],
+            sprites[5][spritesToUse[5]],
+        };
+
+        return temp;
     }
 }

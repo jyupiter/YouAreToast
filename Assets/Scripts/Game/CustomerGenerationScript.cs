@@ -49,7 +49,7 @@ public class CustomerGenerationScript : MonoBehaviour
     }
     void ReadSprites()
     {
-        //Read names.txt and load all names into namesList
+        //Read sprites.txt and load all names into namesList
         string[] sprites = File.ReadAllLines(Path.Combine(Application.streamingAssetsPath, "sprites.txt"));
         spriteList = new List<string>(sprites);
     }
