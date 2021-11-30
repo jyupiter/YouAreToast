@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class FileIO : MonoBehaviour
 {
-    private static List<string> nameList, spriteList;
+    private static List<string> nameList;
+    private static Sprite[] baseArr, faceArr, glassesArr, hairArr, teethArr, tieArr;
     private List<string> ReadTextDataToList(string textFileInput)
     {
         string[] data =
@@ -23,7 +24,12 @@ public class FileIO : MonoBehaviour
     private void PopulateLists()
     {
         nameList = ReadTextDataToList("names.txt");
-        spriteList = ReadTextDataToList("sprites.txt");
+        baseArr = Resources.LoadAll<Sprite>("Art/NPC/Base");
+        faceArr = Resources.LoadAll<Sprite>("Art/NPC/Face");
+        glassesArr = Resources.LoadAll<Sprite>("Art/NPC/Glasses");
+        hairArr = Resources.LoadAll<Sprite>("Art/NPC/Hair");
+        teethArr = Resources.LoadAll<Sprite>("Art/NPC/Teeth");
+        tieArr = Resources.LoadAll<Sprite>("Art/NPC/Tie");
     }
 
     void Start()
@@ -36,8 +42,8 @@ public class FileIO : MonoBehaviour
         return nameList;
     }
 
-    public static List<string> GetSpriteList()
+    public static List<Sprite[]> GetSpriteLists()
     {
-        return spriteList;
+        return new List<Sprite[]> { baseArr, faceArr, glassesArr, hairArr, teethArr, tieArr };
     }
 }
