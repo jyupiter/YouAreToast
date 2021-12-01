@@ -6,6 +6,7 @@ public class Patience : MonoBehaviour, ICustomerStates
 {
     private float maxPatience = 10f;
     private float patience;
+
     public void CustomerHappy()
     {
         Debug.Log("Customer is happy");
