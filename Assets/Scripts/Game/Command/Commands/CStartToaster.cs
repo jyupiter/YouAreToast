@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CStartToaster : ICommand
 {
+    //
     [HideInInspector] public InputHandler inputHandler;
 
     public CStartToaster(InputHandler thisScript)
