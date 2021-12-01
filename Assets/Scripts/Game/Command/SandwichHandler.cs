@@ -5,7 +5,7 @@ using static Order;
 
 public class SandwichHandler : MonoBehaviour
 {
-    private Sandwich sandwich = null;
+    [HideInInspector] public Sandwich sandwich = null;
     public SandwichState sandwichState = SandwichState.fresh;
     public Toaster toaster;
 
