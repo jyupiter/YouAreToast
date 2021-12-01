@@ -7,12 +7,8 @@ public class Level : MonoBehaviour
 {
     //TODO: scoring and stuff? idk
 
-    public void ChangeToKitchenScene()
+    public void ChangeScene(string sceneName)
     {
-        SceneManager.LoadScene("Kitchen_Scene");
-    }
-    public void ChangeToCounterScene()
-    {
-        SceneManager.LoadScene("Counter_Scene");
+        SceneManager.LoadScene(sceneName);
     }
 }
