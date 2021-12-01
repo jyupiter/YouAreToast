@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject customerManager;
+    public CustomerManager customerManager;
 
     public static System.Random r = new System.Random();
 
@@ -12,13 +12,11 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        CustomerManager cm = customerManager.GetComponent<CustomerManager>();
-
         CustomerManager.RegisterObserver(notifier);
         Sandwich.RegisterObserver(notifier);
         SandwichHandler.RegisterObserver(notifier);
 
-        cm.StartCustomerSpawn();
+        customerManager.StartCustomerSpawn();
     }
 
     void Update()
