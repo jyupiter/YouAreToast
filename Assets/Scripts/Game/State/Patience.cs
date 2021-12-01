@@ -9,14 +9,14 @@ public class Patience : MonoBehaviour, ICustomerStates
     private int maxPatience = 90;
 
     private float randomPatience;
-    private float currPatience;
+    public static float currPatience;
 
-    public TextMeshProUGUI patienceText;
+    public SpriteRenderer expression;
 
     public void CustomerHappy()
     {
         Debug.Log("Customer is happy");
-        //TODO: Happy expressions
+        expression.sprite = FileIO.GetSpriteLists()[1][0];
         //TODO: When toast is given to customer: Compare product with expectation.
             //If correct order is given, give high tips
             //If wrong order, give small tips
@@ -24,20 +24,20 @@ public class Patience : MonoBehaviour, ICustomerStates
     public void CustomerImpatient()
     {
         Debug.Log("Customer is impatient");
-        //TODO: Impatient expression
+        expression.sprite = FileIO.GetSpriteLists()[1][1];
         //TODO: When toast is given to customer: Compare product with expectation.
-            //If correct order is given, give small tips
-            //If wrong order, give no tips
+        //If correct order is given, give small tips
+        //If wrong order, give no tips
     }
     public void CustomerAngry()
     {
         Debug.Log("Customer is angry");
-        //TODO: Angry expression
+        expression.sprite = FileIO.GetSpriteLists()[1][2];
         //TODO: When toast is given to customer: Compare product with expectation.
-            //If correct order is given, give no tips
-            //If wrong order, dont even pay for the toast.
+        //If correct order is given, give no tips
+        //If wrong order, dont even pay for the toast.
     }
-    private void Start()
+    public void Awake()
     {
         randomPatience = GameController.r.Next(minPatience, maxPatience);
         currPatience = randomPatience;
@@ -45,7 +45,6 @@ public class Patience : MonoBehaviour, ICustomerStates
 
     private void Update()
     {
-        patienceText.text = currPatience.ToString();
         if(currPatience > 0)
         {
             currPatience -= 1 * Time.deltaTime;
