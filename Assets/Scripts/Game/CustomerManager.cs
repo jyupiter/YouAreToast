@@ -69,8 +69,10 @@ public class CustomerManager : MonoBehaviour
         Customer c = ChooseNextCustomer();
         currentCustomer = c;
 
+        print(Patience.currPatience);
+
         displayName.text = c.GetCustomerName();
-        //displayPatience.text = "what";
+        displayPatience.text = Patience.currPatience.ToString();
 
         List<int> spritesToUse = c.GetSpritesToUse();
         List<Sprite> spritesToAssign = Customer.IntsToSprites(spritesToUse, FileIO.GetSpriteLists());
