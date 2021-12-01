@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public GameObject customerManager;
+
     public static System.Random r = new System.Random();
 
     public Notifier notifier;
 
     void Start()
     {
+        CustomerManager cm = customerManager.GetComponent<CustomerManager>();
+
         CustomerManager.RegisterObserver(notifier);
         Sandwich.RegisterObserver(notifier);
         SandwichHandler.RegisterObserver(notifier);
 
-        CustomerManager.StartCustomerSpawn();
+        cm.StartCustomerSpawn();
     }
 
     void Update()

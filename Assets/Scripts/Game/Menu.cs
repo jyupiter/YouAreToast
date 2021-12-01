@@ -7,6 +7,7 @@ public class Menu : MonoBehaviour
 {
     public GameObject instructionsPanel;
     public GameObject creditsPanel;
+
     private void Start()
     {
         instructionsPanel.SetActive(false);
@@ -22,18 +23,22 @@ public class Menu : MonoBehaviour
     {
         instructionsPanel.SetActive(true);
     }
+
     public void CloseInstructions()
     {
         instructionsPanel.SetActive(false);
     }
+
     public void OpenCredits()
     {
         instructionsPanel.SetActive(true);
     }
+
     public void CloseCredits()
     {
         instructionsPanel.SetActive(false);
     }
+
     public void Quit()
     {
         Application.Quit();
