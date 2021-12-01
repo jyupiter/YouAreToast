@@ -5,7 +5,7 @@ using static SandwichHandler;
 
 public class InputHandler : MonoBehaviour
 {
-    public SandwichHandler sandwichHandler;
+    private SandwichHandler sandwichHandler;
 
     public ICommand StartToasting { get; set; }
     public ICommand MoveBread { get; set; }
