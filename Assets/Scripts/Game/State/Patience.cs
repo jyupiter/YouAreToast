@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Patience : MonoBehaviour, ICustomerStates
 {
     [SerializeField] private int minPatience = 30;
     [SerializeField] private int maxPatience = 50;
 
-    private float patience;
+    private float randomPatience;
+    private float currPatience;
+
+    public TextMeshProUGUI patienceText;
 
     public void CustomerHappy()
     {
@@ -35,25 +39,27 @@ public class Patience : MonoBehaviour, ICustomerStates
     }
     private void Start()
     {
-        patience = maxPatience;
+        randomPatience = GameController.r.Next(minPatience, maxPatience);
+        currPatience = randomPatience;
     }
 
     private void Update()
     {
-        if(patience > 0)
+        patienceText.text = currPatience.ToString();
+        if(currPatience > 0)
         {
-            patience -= 1 * Time.deltaTime;
+            currPatience -= 1 * Time.deltaTime;
         }
         else
         {
-            patience = 0;
+            currPatience = 0;
         }
 
-        if (patience <= maxPatience / 3)
+        if (currPatience <= randomPatience / 3)
         {
             CustomerAngry();
         }
-        else if (patience < maxPatience / 3 * 2)
+        else if (currPatience < randomPatience / 3 * 2)
         {
             CustomerImpatient();
         }

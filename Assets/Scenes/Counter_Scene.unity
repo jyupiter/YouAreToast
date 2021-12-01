@@ -1241,6 +1241,7 @@ GameObject:
   - component: {fileID: 491854688}
   - component: {fileID: 491854689}
   - component: {fileID: 491854690}
+  - component: {fileID: 491854691}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -1329,6 +1330,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8133ba8162451744b94f92ffaa88e6dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &491854691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491854684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc3eb0090412eb409bb2159d92eb041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minPatience: 30
+  maxPatience: 50
+  patienceText: {fileID: 1165707425}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2643,7 +2659,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2702,7 +2718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -180, y: 160}
+  m_AnchoredPosition: {x: -284, y: 160}
   m_SizeDelta: {x: 207.22827, y: 35.54016}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1152950309
@@ -2913,7 +2929,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2972,7 +2988,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -180, y: 120.91}
+  m_AnchoredPosition: {x: -284, y: 120.91}
   m_SizeDelta: {x: 207.22827, y: 35.54016}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1194149886

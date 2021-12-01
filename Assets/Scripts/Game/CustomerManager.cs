@@ -70,7 +70,7 @@ public class CustomerManager : MonoBehaviour
         currentCustomer = c;
 
         displayName.text = c.GetCustomerName();
-        displayPatience.text = "what";
+        //displayPatience.text = "what";
 
         List<int> spritesToUse = c.GetSpritesToUse();
         List<Sprite> spritesToAssign = Customer.IntsToSprites(spritesToUse, FileIO.GetSpriteLists());
