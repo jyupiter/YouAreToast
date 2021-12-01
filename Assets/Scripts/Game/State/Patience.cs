@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Patience : MonoBehaviour, ICustomerStates
 {
-    private float maxPatience = 10f;
+    [SerializeField] private int minPatience = 30;
+    [SerializeField] private int maxPatience = 50;
+
     private float patience;
 
     public void CustomerHappy()
