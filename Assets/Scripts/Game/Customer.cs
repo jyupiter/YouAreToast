@@ -5,8 +5,6 @@ using UnityEngine;
 public class Customer
 {
     // variables
-    [SerializeField] private int minPatience = 30;
-    [SerializeField] private int maxPatience = 50;
 
     private Patience patience;
     private string customerName = "";
