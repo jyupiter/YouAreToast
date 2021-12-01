@@ -5,8 +5,8 @@ using TMPro;
 
 public class Patience : MonoBehaviour, ICustomerStates
 {
-    [SerializeField] private int minPatience = 30;
-    [SerializeField] private int maxPatience = 50;
+    private int minPatience = 50;
+    private int maxPatience = 90;
 
     private float randomPatience;
     private float currPatience;

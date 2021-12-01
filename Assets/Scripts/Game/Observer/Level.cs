@@ -7,8 +7,26 @@ public class Level : MonoBehaviour
 {
     //TODO: scoring and stuff? idk
 
-    public void ChangeScene(string sceneName)
+    private bool inKitchen;
+    public GameObject kitchenPanel;
+
+    private void Start()
     {
-        SceneManager.LoadScene(sceneName);
+        kitchenPanel.SetActive(false);
+        inKitchen = false;
+    }
+
+    public void EnterOrExitKitchen()
+    {
+        if (inKitchen)
+        {
+            kitchenPanel.SetActive(false);
+            inKitchen = false;
+        }
+        else
+        {
+            kitchenPanel.SetActive(true);
+            inKitchen = true;
+        }
     }
 }
