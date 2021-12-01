@@ -1147,6 +1147,7 @@ GameObject:
   - component: {fileID: 491854686}
   - component: {fileID: 491854685}
   - component: {fileID: 491854688}
+  - component: {fileID: 491854689}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -1203,6 +1204,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21264a5875bca0b4ea5290ef6ca8b781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &491854689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491854684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6840412d87ca9574a8e7f2d3b3e4374e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &519420028
@@ -3687,7 +3700,7 @@ GameObject:
   - component: {fileID: 1410530949}
   - component: {fileID: 1410530950}
   m_Layer: 0
-  m_Name: NPC
+  m_Name: Customer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3934,7 +3947,6 @@ GameObject:
   - component: {fileID: 1621020893}
   - component: {fileID: 1621020892}
   - component: {fileID: 1621020891}
-  - component: {fileID: 1621020895}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4027,23 +4039,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1621020895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621020890}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0fe8185ae028a47b435c6da002106b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayName: {fileID: 1083581159}
-  displaySprite: {fileID: 1083581159}
-  displayOrder: {fileID: 1835846210}
-  displayToastiness: {fileID: 280134426}
-  displayPatience: {fileID: 1165707425}
 --- !u!1 &1674743483
 GameObject:
   m_ObjectHideFlags: 0
