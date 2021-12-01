@@ -11,7 +11,7 @@ public class SandwichHandler : MonoBehaviour
 
     public GameObject prefab;
 
-    public GameObject sandwichObject;
+    private GameObject sandwichObject;
     public GameObject toasterPositionMarker;
     public GameObject platePositionMarker;
 
