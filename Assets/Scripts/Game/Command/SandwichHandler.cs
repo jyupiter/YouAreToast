@@ -8,6 +8,9 @@ public class SandwichHandler : MonoBehaviour
     private Sandwich sandwich = null;
     Toaster toaster = new Toaster();
 
+    public GameObject sandwichObject;
+    public GameObject plate;
+
     #region instantiate sandwich
 
     public void StartBriocheSandwich()
@@ -48,20 +51,14 @@ public class SandwichHandler : MonoBehaviour
 
     #endregion
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void StartToaster()
     {
-        if(collision.gameObject.CompareTag("Toaster"))
-        {
-            toaster.StartToasting(sandwich);
-        }
+        toaster.StartToasting(sandwich);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public void MoveBread()
     {
-        if(collision.gameObject.CompareTag("Toaster"))
-        {
-            toaster.StopToasting();
-        }
+        sandwichObject.transform.position = plate.transform.position;
     }
 
     #region event system
