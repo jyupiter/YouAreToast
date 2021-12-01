@@ -4038,14 +4038,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 239743316}
         m_TargetAssemblyTypeName: Level, Assembly-CSharp
-        m_MethodName: ChangeToKitchenScene
-        m_Mode: 1
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Counter_Scene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1654318619
@@ -4598,8 +4598,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b53b578570c414fa2804c86bdf457c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sandwichState: 0
+  prefab: {fileID: 0}
   sandwichObject: {fileID: 1164614477}
-  plate: {fileID: 1105761451}
+  toasterPositionMarker: {fileID: 0}
+  platePositionMarker: {fileID: 0}
 --- !u!1 &1952580681
 GameObject:
   m_ObjectHideFlags: 0
