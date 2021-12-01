@@ -5,11 +5,22 @@ using UnityEngine;
 
 public class CustomerManager : MonoBehaviour
 {
+    CustomerManager cm;
+
     public static int preloadedCustomers = 15;
     public static bool hasCustomer = false;
 
     public static List<Customer> customers = new List<Customer>();
     public static Customer currentCustomer = null;
+
+    public GameObject customerSpawnPosition;
+    public GameObject customerPrefab;
+    public static GameObject currentCustomerObject;
+
+    private void Start()
+    {
+        cm = gameObject.GetComponent<CustomerManager>();
+    }
 
     public static void PopulateCustomers()
     {
@@ -19,7 +30,7 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
-    public static void StartCustomerSpawn()
+    public void StartCustomerSpawn()
     {
         PopulateCustomers();
 
@@ -35,15 +46,18 @@ public class CustomerManager : MonoBehaviour
         customers.Clear();
         currentCustomer = null;
         hasCustomer = false;
+
+        currentCustomerObject.SetActive(false);
+        currentCustomerObject = null;
     }
 
-    private static Customer ChooseNextCustomer()
+    private Customer ChooseNextCustomer()
     {
         int i = GameController.r.Next(customers.Count);
         return customers[i];
     }
 
-    private static void ShowNextCustomer()
+    private void ShowNextCustomer()
     {
         NotifyObservers("next customer incoming (hopefully)");
 
@@ -51,9 +65,27 @@ public class CustomerManager : MonoBehaviour
         currentCustomer = c;
 
         List<int> spritesToUse = c.GetSpritesToUse();
-        List<Sprite> spritesToAssign = Customer.IntsToSprites(c.GetSpritesToUse(), FileIO.GetSpriteLists());
-        //assign sprites to customer prefab
-        //make customer prefab visible
+        List<Sprite> spritesToAssign = Customer.IntsToSprites(spritesToUse, FileIO.GetSpriteLists());
+
+        if(currentCustomerObject == null)
+        {
+            currentCustomerObject =
+                Instantiate
+                (
+                    cm.customerPrefab,
+                    cm.customerSpawnPosition.transform.position,
+                    Quaternion.identity
+                );
+            currentCustomerObject.SetActive(false);
+        }
+
+        SpriteRenderer[] parts = currentCustomerObject.GetComponentsInChildren<SpriteRenderer>();
+        for(int i = 0; i < parts.Length; i++)
+        {
+            parts[i].sprite = spritesToAssign[i];
+        }
+
+        currentCustomerObject.SetActive(true);
         hasCustomer = true;
     }
 
@@ -61,7 +93,8 @@ public class CustomerManager : MonoBehaviour
     {
         NotifyObservers("this customer is leaving now");
 
-        //hide customer prefab
+        currentCustomerObject.SetActive(false);
+
         if(currentCustomer != null)
         {
             customers.Remove(currentCustomer);
