@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CustomerManager : MonoBehaviour
 {
@@ -17,7 +18,11 @@ public class CustomerManager : MonoBehaviour
     public GameObject customerPrefab;
     public static GameObject currentCustomerObject;
 
-    private void Start()
+    public GameObject customerInfoContainer;
+    public TextMeshProUGUI displayName;
+    public TextMeshProUGUI displayPatience;
+
+    void Awake()
     {
         cm = gameObject.GetComponent<CustomerManager>();
     }
@@ -63,6 +68,9 @@ public class CustomerManager : MonoBehaviour
 
         Customer c = ChooseNextCustomer();
         currentCustomer = c;
+
+        displayName.text = c.GetCustomerName();
+        displayPatience.text = "what";
 
         List<int> spritesToUse = c.GetSpritesToUse();
         List<Sprite> spritesToAssign = Customer.IntsToSprites(spritesToUse, FileIO.GetSpriteLists());

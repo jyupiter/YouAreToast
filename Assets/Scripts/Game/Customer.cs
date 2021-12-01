@@ -59,6 +59,8 @@ public class Customer
         return order;
     }
 
+
+
     #endregion
 
     #region setters
@@ -100,7 +102,12 @@ public class Customer
         List<int> temp = new List<int> { 0, 0, 0, 0, 0, 0 };
 
         for(int i = 0; i < sprites.Count; i++)
-            temp[i] = GameController.r.Next(0, sprites[i].Length);
+        {
+            if(i == 1)
+                temp[i] = 0;
+            else
+                temp[i] = GameController.r.Next(0, sprites[i].Length);
+        }
 
         return temp;
     }
