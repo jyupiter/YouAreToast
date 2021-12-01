@@ -6,10 +6,15 @@ using static Order;
 public class SandwichHandler : MonoBehaviour
 {
     private Sandwich sandwich = null;
+    public SandwichState sandwichState = SandwichState.fresh;
+
     Toaster toaster = new Toaster();
 
+    public GameObject prefab;
+
     public GameObject sandwichObject;
-    public GameObject plate;
+    public GameObject toasterPositionMarker;
+    public GameObject platePositionMarker;
 
     #region instantiate sandwich
 
@@ -51,14 +56,28 @@ public class SandwichHandler : MonoBehaviour
 
     #endregion
 
-    public void StartToaster()
+    public bool StartToaster() // require player input. mouse button 0.
     {
+        sandwichState = SandwichState.toasted;
+        sandwichObject = Instantiate(prefab, toasterPositionMarker.transform.position, Quaternion.identity);
         toaster.StartToasting(sandwich);
+        return true;
     }
 
-    public void MoveBread()
+    public bool MoveBread() // player input.
     {
-        sandwichObject.transform.position = plate.transform.position;
+        sandwichState = SandwichState.complete;
+        toaster.StopToasting();
+        sandwichObject.transform.position = platePositionMarker.transform.position;
+        return true;
+    }
+
+    public bool SubmitSandwich()
+    {
+        sandwichState = SandwichState.fresh;
+        //TODO: do something in Level.cs
+        Destroy(sandwichObject);
+        return true;
     }
 
     #region event system
@@ -110,4 +129,11 @@ public class SandwichHandler : MonoBehaviour
 
     */
     #endregion
+
+    public enum SandwichState
+    {
+        fresh,
+        toasted,
+        complete
+    }
 }
