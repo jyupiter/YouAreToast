@@ -43,28 +43,19 @@ public class Patience : MonoBehaviour, ICustomerStates
         currPatience = randomPatience;
     }
 
-    private void Update()
+    private void Update() 
     {
         if(currPatience > 0)
-        {
-            currPatience -= 1 * Time.deltaTime;
-        }
+            currPatience -= Time.deltaTime;
         else
-        {
             currPatience = 0;
-        }
 
         if (currPatience <= randomPatience / 3)
-        {
             CustomerAngry();
-        }
-        else if (currPatience < randomPatience / 3 * 2)
-        {
-            CustomerImpatient();
-        }
         else
-        {
-            CustomerHappy();
-        }
+            if (currPatience < randomPatience / 3 * 2)
+                CustomerImpatient();
+            else
+                CustomerHappy();
     }
 }
