@@ -6,7 +6,7 @@ public class Notifier : MonoBehaviour, IObserver
 {
     public void Notify(string aMsg)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(aMsg);
     }
 
     // Start is called before the first frame update

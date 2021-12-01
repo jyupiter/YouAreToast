@@ -23,12 +23,15 @@ public class CustomerManager : MonoBehaviour
     {
         PopulateCustomers();
 
+        //TODO: delay first customer's appearance
         if(hasCustomer == false)
             ShowNextCustomer();
     }
 
     public static void StopCustomerSpawn()
     {
+        NotifyObservers("ending the day... all customers leaving");
+
         customers.Clear();
         currentCustomer = null;
         hasCustomer = false;
@@ -42,6 +45,8 @@ public class CustomerManager : MonoBehaviour
 
     private static void ShowNextCustomer()
     {
+        NotifyObservers("next customer incoming (hopefully)");
+
         Customer c = ChooseNextCustomer();
         currentCustomer = c;
 
@@ -54,6 +59,8 @@ public class CustomerManager : MonoBehaviour
 
     private static void HideThisCustomer()
     {
+        NotifyObservers("this customer is leaving now");
+
         //hide customer prefab
         if(currentCustomer != null)
         {
@@ -62,4 +69,26 @@ public class CustomerManager : MonoBehaviour
         }
         hasCustomer = false;
     }
+
+    #region event system
+
+    private delegate void Notify(string msg);
+    private static event Notify NotifyEvent;
+
+    public static void RegisterObserver(IObserver aObserver)
+    {
+        NotifyEvent += aObserver.Notify;
+    }
+
+    public static void UnregisterObserver(IObserver aObserver)
+    {
+        NotifyEvent -= aObserver.Notify;
+    }
+
+    private static void NotifyObservers(string aMsg)
+    {
+        NotifyEvent(aMsg);
+    }
+
+    #endregion
 }

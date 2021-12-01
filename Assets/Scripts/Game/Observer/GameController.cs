@@ -8,9 +8,12 @@ public class GameController : MonoBehaviour
 
     public Notifier notifier;
 
-
     void Start()
     {
+        CustomerManager.RegisterObserver(notifier);
+        Sandwich.RegisterObserver(notifier);
+        SandwichHandler.RegisterObserver(notifier);
+
         CustomerManager.StartCustomerSpawn();
     }
 
