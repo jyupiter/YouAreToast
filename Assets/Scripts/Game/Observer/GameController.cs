@@ -21,6 +21,6 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        
+        customerManager.UpdatePatienceText();
     }
 }

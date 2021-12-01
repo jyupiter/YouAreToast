@@ -69,10 +69,7 @@ public class CustomerManager : MonoBehaviour
         Customer c = ChooseNextCustomer();
         currentCustomer = c;
 
-        print(Patience.currPatience);
-
         displayName.text = c.GetCustomerName();
-        displayPatience.text = Patience.currPatience.ToString();
 
         List<int> spritesToUse = c.GetSpritesToUse();
         List<Sprite> spritesToAssign = Customer.IntsToSprites(spritesToUse, FileIO.GetSpriteLists());
@@ -88,6 +85,8 @@ public class CustomerManager : MonoBehaviour
                 );
             currentCustomerObject.SetActive(false);
         }
+
+        UpdatePatienceText();
 
         SpriteRenderer[] parts = currentCustomerObject.GetComponentsInChildren<SpriteRenderer>();
         for(int i = 0; i < parts.Length; i++)
@@ -111,6 +110,11 @@ public class CustomerManager : MonoBehaviour
             currentCustomer = null;
         }
         hasCustomer = false;
+    }
+
+    public void UpdatePatienceText()
+    {
+        displayPatience.text = Patience.currPatience.ToString();
     }
 
     #region event system
