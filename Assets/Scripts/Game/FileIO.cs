@@ -7,6 +7,7 @@ public class FileIO : MonoBehaviour
 {
     private static List<string> nameList;
     private static Sprite[] baseArr, faceArr, glassesArr, hairArr, teethArr, tieArr;
+    
     private List<string> ReadTextDataToList(string textFileInput)
     {
         string[] data =
@@ -32,7 +33,7 @@ public class FileIO : MonoBehaviour
         tieArr = Resources.LoadAll<Sprite>("Art/NPC/Tie");
     }
 
-    void Start()
+    void Awake()
     {
         PopulateLists();
     }
