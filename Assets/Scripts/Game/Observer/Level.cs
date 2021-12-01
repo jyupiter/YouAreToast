@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
+    //TODO: scoring and stuff? idk
 
     void Start()
     {
