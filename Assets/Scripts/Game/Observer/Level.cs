@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
     //TODO: scoring and stuff? idk
 
-    void Start()
+    public void ChangeToKitchenScene()
     {
+        SceneManager.LoadScene("Kitchen_Scene");
     }
-
-    void Update()
+    public void ChangeToCounterScene()
     {
-        
+        SceneManager.LoadScene("Counter_Scene");
     }
 }
