@@ -7,8 +7,7 @@ public class SandwichHandler : MonoBehaviour
 {
     private Sandwich sandwich = null;
     public SandwichState sandwichState = SandwichState.fresh;
-
-    Toaster toaster = new Toaster();
+    public Toaster toaster;
 
     public GameObject prefab;
 
