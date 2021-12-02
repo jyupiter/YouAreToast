@@ -95,16 +95,18 @@ public class CustomerManager : MonoBehaviour
         }
 
         currentCustomerObject.SetActive(true);
+        customerInfoContainer.SetActive(true);
         hasCustomer = true;
     }
 
-    private static void HideThisCustomer()
+    public void HideThisCustomer()
     {
         NotifyObservers("this customer is leaving now");
 
         currentCustomerObject.SetActive(false);
+        customerInfoContainer.SetActive(false);
 
-        if(currentCustomer != null)
+        if (currentCustomer != null)
         {
             customers.Remove(currentCustomer);
             currentCustomer = null;

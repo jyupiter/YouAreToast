@@ -7,4 +7,5 @@ public interface ICustomerStates
     void CustomerHappy();
     void CustomerImpatient();
     void CustomerAngry();
+    void CustomerLeave();
 }

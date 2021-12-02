@@ -27,7 +27,6 @@ public class SandwichHandler : MonoBehaviour
                 ToastLevel.untoasted
             );
         NotifyObservers("started brioche sandwich");
-        print("brioche");
     }
 
     public void StartEnglishMuffinSandwich()
