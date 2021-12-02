@@ -3,22 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Order : Containers
+public class Order : Container
 {
-
-    [SerializeField] private Bread bread;
-    [SerializeField] private ToastLevel toastLevel;
 
     public static int minToppings = 1;
     public static int maxToppings = 5;
 
-    [SerializeField] private List<Topping> toppings;
+    private List<Topping> toppings;
     private Customer customer;
 
     public Order()
     {
-        bread = Bread.bagel;
-        toastLevel = ToastLevel.untoasted;
         toppings = new List<Topping>();
         customer = null;
     }
@@ -62,16 +57,6 @@ public class Order : Containers
     public void SetCustomer(Customer customer)
     {
         this.customer = customer;
-    }
-
-    public Bread GetBread()
-    {
-        return bread;
-    }
-
-    public ToastLevel GetToastLevel()
-    {
-        return toastLevel;
     }
 
     public List<Topping> GetToppings()

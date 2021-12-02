@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Order;
 
-public class Sandwich : Containers
+public class Sandwich : Container
 {
     private Order order = null;
-
-    private Bread bread = Bread.bagel;
-    private ToastLevel toastLevel = ToastLevel.untoasted;
 
     private Stack<Topping> currentToppings = new Stack<Topping>();
 
@@ -93,21 +90,6 @@ public class Sandwich : Containers
     public void SetCurrentToppings(Stack<Topping> currentToppings)
     {
         this.currentToppings = currentToppings;
-    }
-
-    public Bread GetBread()
-    {
-        return bread;
-    }
-
-    public ToastLevel GetToastLevel()
-    {
-        return toastLevel;
-    }
-
-    public void SetToastLevel(ToastLevel toastLevel)
-    {
-        this.toastLevel = toastLevel;
     }
 
     #endregion
