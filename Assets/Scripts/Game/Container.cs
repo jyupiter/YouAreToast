@@ -13,8 +13,8 @@ public abstract class Container
 
     public Container(Bread bread, ToastLevel toastLevel)
     {
-        bread = Bread.bagel;
-        toastLevel = ToastLevel.untoasted;
+        this.bread = Bread.bagel;
+        this.toastLevel = ToastLevel.untoasted;
         toppings = new Stack<Topping>();
     }
 
