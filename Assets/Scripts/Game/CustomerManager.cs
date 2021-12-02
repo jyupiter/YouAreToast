@@ -8,6 +8,7 @@ using TMPro;
 public class CustomerManager : MonoBehaviour
 {
     CustomerManager cm;
+    SandwichHandler sandwichHandler;
 
     public static int preloadedCustomers = 15;
     public static bool hasCustomer = false;
@@ -20,12 +21,15 @@ public class CustomerManager : MonoBehaviour
     public static GameObject currentCustomerObject;
 
     public GameObject customerInfoContainer;
-    public TextMeshProUGUI displayName, displayBread, displayToastLevel, displayToppings;
+    public TextMeshProUGUI displayName;
+    public GameObject displayBread, displayTopping1, displayTopping2, displayTopping3, displayTopping4, displayTopping5;
     public Slider currPatienceBar;
+
 
     void Awake()
     {
         cm = gameObject.GetComponent<CustomerManager>();
+        sandwichHandler = GameObject.Find("Grill Station").GetComponent<SandwichHandler>();
     }
 
     public static void PopulateCustomers()
@@ -71,21 +75,10 @@ public class CustomerManager : MonoBehaviour
         currentCustomer = c;
 
         displayName.text = c.GetCustomerName();
-        displayBread.text = c.GetOrder().GetBread().ToString();
-        displayToastLevel.text = c.GetOrder().GetToastLevel().ToString();
-        //displayToppings.text = c.GetOrder().GetToppings().ToString();
+        sandwichHandler.UpdateBreadSprite(c.GetOrder(), displayBread);
         for (int i = 0; i < c.GetOrder().GetToppings().Count; i++)
         {
-            print(c.GetOrder().GetToppings().Count);
-            if (i == c.GetOrder().GetToppings().Count)
-            {
-                displayToppings.text = c.GetOrder().GetToppings()[i].ToString();
-            }
-            else
-            {
-                displayToppings.text += c.GetOrder().GetToppings()[i].ToString();
-                displayToppings.text += "\n";
-            }
+            //displayTopping1.GetComponent<SpriteRenderer>().sprite = c.GetOrder().GetToppings();
         }
 
         List<int> spritesToUse = c.GetSpritesToUse();

@@ -22,7 +22,7 @@ public class Level : MonoBehaviour
     private void Start()
     {
         level = 1;
-        maxTimePerDay = 5f;
+        maxTimePerDay = 300f;
         currTime = maxTimePerDay;
         inKitchen = false;
 
@@ -57,7 +57,7 @@ public class Level : MonoBehaviour
 
     public void NextLevel()
     {
-        maxTimePerDay = 5f;
+        maxTimePerDay = 50f;
         endDayStats.SetActive(false);
         level++;
     }
