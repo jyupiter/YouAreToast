@@ -7,6 +7,8 @@ public class Level : MonoBehaviour
 {
     //TODO: scoring and stuff? idk
 
+
+
     private bool inKitchen;
     public GameObject kitchenPanel;
 
