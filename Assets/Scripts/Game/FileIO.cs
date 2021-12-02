@@ -51,8 +51,18 @@ public class FileIO : MonoBehaviour
         return new List<Sprite[]> { baseArr, faceArr, glassesArr, hairArr, teethArr, tieArr };
     }
 
-    public static List<Sprite[]> GetBreadSpriteLists()
+    public static Sprite[] GetBriocheSprites()
     {
-        return new List<Sprite[]> { briocheArr, bagelArr, englishMuffinArr };
+        return briocheArr;
+    }
+
+    public static Sprite[] GetBagelSprites()
+    {
+        return bagelArr;
+    }
+
+    public static Sprite[] GetEnglishMuffinSprites()
+    {
+        return englishMuffinArr;
     }
 }

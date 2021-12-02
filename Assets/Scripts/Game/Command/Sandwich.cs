@@ -40,21 +40,20 @@ public class Sandwich
         {
             case ToastLevel.untoasted:
                 toastLevel = ToastLevel.golden;
-                NotifyObservers("toast is now golden");
+                NotifyObservers("golded");
                 hasNextState = true;
                 break;
             case ToastLevel.golden:
                 toastLevel = ToastLevel.crispy;
-                NotifyObservers("toast is now crispy");
+                NotifyObservers("crispy");
                 hasNextState = true;
                 break;
             case ToastLevel.crispy:
                 toastLevel = ToastLevel.charred;
-                NotifyObservers("toast is now charred");
+                NotifyObservers("charred");
                 hasNextState = true;
                 break;
             case ToastLevel.charred:
-                NotifyObservers("you can't toast this further");
                 break;
             default:
                 break;
@@ -94,6 +93,21 @@ public class Sandwich
     public void SetCurrentToppings(Stack<Topping> currentToppings)
     {
         this.currentToppings = currentToppings;
+    }
+
+    public Bread GetBread()
+    {
+        return bread;
+    }
+
+    public ToastLevel GetToastLevel()
+    {
+        return toastLevel;
+    }
+
+    public void SetToastLevel(ToastLevel toastLevel)
+    {
+        this.toastLevel = toastLevel;
     }
 
     #endregion
