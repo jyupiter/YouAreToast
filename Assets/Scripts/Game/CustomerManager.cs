@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class CustomerManager : MonoBehaviour
@@ -20,7 +21,7 @@ public class CustomerManager : MonoBehaviour
 
     public GameObject customerInfoContainer;
     public TextMeshProUGUI displayName;
-    public TextMeshProUGUI displayPatience;
+    public Slider currPatienceBar;
 
     void Awake()
     {
@@ -116,7 +117,8 @@ public class CustomerManager : MonoBehaviour
 
     public void UpdatePatienceText()
     {
-        displayPatience.text = Patience.currPatience.ToString();
+        currPatienceBar.maxValue = Patience.randomPatience;
+        currPatienceBar.value = Patience.currPatience;
     }
 
     #region event system

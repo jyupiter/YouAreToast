@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class Level : MonoBehaviour
 {
     //TODO: scoring and stuff? idk
 
+    private float maxTimePerDay = 450f;
 
+    public Image maxTime, currTime;
 
     private bool inKitchen;
     public GameObject kitchenPanel;
@@ -16,6 +19,15 @@ public class Level : MonoBehaviour
     {
         kitchenPanel.SetActive(false);
         inKitchen = false;
+    }
+
+    private void Update()
+    {
+        maxTimePerDay -= Time.deltaTime;
+        if (maxTimePerDay >= 0)
+        {
+            print("Day ended");
+        }
     }
 
     public void EnterOrExitKitchen()

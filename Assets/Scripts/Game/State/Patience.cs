@@ -8,7 +8,7 @@ public class Patience : MonoBehaviour, ICustomerStates
     private int minPatience = 50;
     private int maxPatience = 90;
 
-    private float randomPatience;
+    public static float randomPatience;
     public static float currPatience;
 
     public SpriteRenderer expression;
