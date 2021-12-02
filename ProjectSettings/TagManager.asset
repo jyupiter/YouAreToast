@@ -45,3 +45,6 @@ TagManager:
   - name: Canvas
     uniqueID: 2288070403
     locked: 0
+  - name: Kitchen Canvas
+    uniqueID: 2991938019
+    locked: 0

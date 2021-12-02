@@ -14,7 +14,7 @@ public class Level : MonoBehaviour
     private float currTime;
     public Image currTimeImage;
 
-    private bool inKitchen;
+    public static bool inKitchen;
     public GameObject kitchenPanel;
     public GameObject endDayStats;
 
