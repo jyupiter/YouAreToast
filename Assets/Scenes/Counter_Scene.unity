@@ -2533,9 +2533,12 @@ MonoBehaviour:
   customerPrefab: {fileID: 6777425682606258512, guid: d60180d7c73a24a468f6f5c98e8aa8dd, type: 3}
   customerInfoContainer: {fileID: 1336745450}
   displayName: {fileID: 1083581159}
-  displayBread: {fileID: 1152950311}
-  displayToastLevel: {fileID: 280134426}
-  displayToppings: {fileID: 1835846210}
+  displayBread: {fileID: 415859978}
+  displayTopping1: {fileID: 609403700}
+  displayTopping2: {fileID: 871202971}
+  displayTopping3: {fileID: 1864190673}
+  displayTopping4: {fileID: 1802941529}
+  displayTopping5: {fileID: 843850715}
   currPatienceBar: {fileID: 1967509395}
 --- !u!114 &491854690
 MonoBehaviour:
