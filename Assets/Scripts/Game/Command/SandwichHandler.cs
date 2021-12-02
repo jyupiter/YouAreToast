@@ -151,7 +151,7 @@ public class SandwichHandler : MonoBehaviour, IObserver
     public void UpdateToppingsSprites(Container container, List<GameObject> targetGameObjectList)
     {
         Stack<Topping> toppings = container.GetToppings();
-        Sprite[] toppingSprites = FileIO.GetToppingsSprites(toppings);
+        Sprite[] toppingSprites = FileIO.GetToppingsSprites(toppings, targetGameObjectList.Count);
 
         for(int i = 0; i < targetGameObjectList.Count; i++)
         {
