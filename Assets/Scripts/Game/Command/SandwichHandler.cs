@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Order;
 
-public class SandwichHandler : MonoBehaviour
+public class SandwichHandler : MonoBehaviour, IObserver
 {
     [HideInInspector] public Sandwich sandwich = null;
     public SandwichState sandwichState = SandwichState.fresh;
@@ -106,6 +107,32 @@ public class SandwichHandler : MonoBehaviour
     private static void NotifyObservers(string aMsg)
     {
         NotifyEvent(aMsg);
+    }
+
+    void IObserver.Notify(string aMsg)
+    {
+        Bread bread = sandwich.GetBread();
+        ToastLevel toastLevel = sandwich.GetToastLevel();
+        Sprite[] breadSprites = new Sprite[] { };
+
+        switch(bread)
+        {
+            case Bread.brioche:
+                breadSprites = FileIO.GetBriocheSprites();
+                break;
+            case Bread.english_muffin:
+                breadSprites = FileIO.GetEnglishMuffinSprites();
+                break;
+            case Bread.bagel:
+                breadSprites = FileIO.GetBagelSprites();
+                break;
+            default:
+                breadSprites = FileIO.GetBagelSprites();
+                break;
+        }
+
+        int levelInt = (int)Convert.ChangeType(toastLevel, toastLevel.GetTypeCode());
+        sandwichObject.GetComponent<SpriteRenderer>().sprite = breadSprites[levelInt];
     }
 
     #endregion
