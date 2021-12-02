@@ -86,7 +86,7 @@ public class Customer
     public static Customer GenerateCustomer()
     {
         List<string> names = FileIO.GetNameList();
-        List<Sprite[]> sprites = FileIO.GetSpriteLists();
+        List<Sprite[]> sprites = FileIO.GetCustomerSpriteLists();
 
         //randomly choose name
         int randomValue = GameController.r.Next(0, names.Count);
