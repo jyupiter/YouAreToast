@@ -86,10 +86,10 @@ public class Order : Container
         cheese,
         egg,
         avocado,
-        bacon,
+        ham,
         lettuce,
         tomato,
-        mayonaise,
+        mayonnaise,
         ketchup,
         bbq_sauce
     }
