@@ -15,12 +15,6 @@ public class ToppingHandler : MonoBehaviour
         index = toppingCommands.Count - 1;
     }
 
-    public void AddEgg()
-    {
-        IToppingCommand command = new AddEggCommand(sandwichHandler.sandwich, this);
-        AddCommand(command);
-    }
-
     public void IterateCommands(bool undo)
     {
         if(undo == true)
@@ -37,6 +31,12 @@ public class ToppingHandler : MonoBehaviour
             if(index >= toppingCommands.Count)
                 index = toppingCommands.Count - 1;
         }
+    }
+
+    public void AddEgg()
+    {
+        IToppingCommand command = new AddEggCommand(sandwichHandler.sandwich, this);
+        AddCommand(command);
     }
 
     public void AddAvocado()
