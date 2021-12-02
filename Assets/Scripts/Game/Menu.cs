@@ -31,12 +31,12 @@ public class Menu : MonoBehaviour
 
     public void OpenCredits()
     {
-        instructionsPanel.SetActive(true);
+        creditsPanel.SetActive(true);
     }
 
     public void CloseCredits()
     {
-        instructionsPanel.SetActive(false);
+        creditsPanel.SetActive(false);
     }
 
     public void Quit()
