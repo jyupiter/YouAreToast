@@ -23,7 +23,7 @@ public class CustomerManager : MonoBehaviour
     public GameObject customerInfoContainer;
     public TextMeshProUGUI displayName;
     public GameObject displayBread, displayTopping1, displayTopping2, displayTopping3, displayTopping4, displayTopping5;
-    public List<GameObject> toppingGameObjects = new List<GameObject>();
+    public List<GameObject> toppingGameObjects;
     public Slider currPatienceBar;
 
     void Awake()
