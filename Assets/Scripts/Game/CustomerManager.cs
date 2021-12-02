@@ -72,7 +72,7 @@ public class CustomerManager : MonoBehaviour
         displayName.text = c.GetCustomerName();
 
         List<int> spritesToUse = c.GetSpritesToUse();
-        List<Sprite> spritesToAssign = Customer.IntsToSprites(spritesToUse, FileIO.GetSpriteLists());
+        List<Sprite> spritesToAssign = Customer.IntsToSprites(spritesToUse, FileIO.GetCustomerSpriteLists());
 
         if(currentCustomerObject == null)
         {
