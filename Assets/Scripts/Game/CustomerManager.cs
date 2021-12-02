@@ -23,8 +23,8 @@ public class CustomerManager : MonoBehaviour
     public GameObject customerInfoContainer;
     public TextMeshProUGUI displayName;
     public GameObject displayBread, displayTopping1, displayTopping2, displayTopping3, displayTopping4, displayTopping5;
+    public List<GameObject> toppingGameObjects = new List<GameObject>();
     public Slider currPatienceBar;
-
 
     void Awake()
     {
@@ -76,10 +76,7 @@ public class CustomerManager : MonoBehaviour
 
         displayName.text = c.GetCustomerName();
         sandwichHandler.UpdateBreadSprite(c.GetOrder(), displayBread);
-        for (int i = 0; i < c.GetOrder().GetToppings().Count; i++)
-        {
-            //displayTopping1.GetComponent<SpriteRenderer>().sprite = c.GetOrder().GetToppings();
-        }
+        sandwichHandler.UpdateToppingsSprites(c.GetOrder(), toppingGameObjects);
 
         List<int> spritesToUse = c.GetSpritesToUse();
         List<Sprite> spritesToAssign = Customer.IntsToSprites(spritesToUse, FileIO.GetCustomerSpriteLists());
