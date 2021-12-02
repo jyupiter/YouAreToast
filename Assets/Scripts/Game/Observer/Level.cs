@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Level : MonoBehaviour
@@ -10,7 +11,7 @@ public class Level : MonoBehaviour
     private int level;
     public TextMeshProUGUI displayDay;
 
-    private float maxTimePerDay = 450f;
+    private float maxTimePerDay;
     private float currTime;
     public Image currTimeImage;
 
@@ -21,6 +22,7 @@ public class Level : MonoBehaviour
     private void Start()
     {
         level = 1;
+        maxTimePerDay = 5f;
         currTime = maxTimePerDay;
         inKitchen = false;
 
@@ -51,5 +53,16 @@ public class Level : MonoBehaviour
             kitchenPanel.SetActive(true);
             inKitchen = true;
         }
+    }
+
+    public void NextLevel()
+    {
+        maxTimePerDay = 5f;
+        endDayStats.SetActive(false);
+        level++;
+    }
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene("Counter_Scene");
     }
 }
