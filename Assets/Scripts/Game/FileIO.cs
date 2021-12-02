@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using static Order;
 
 public class FileIO : MonoBehaviour
 {
     private static List<string> nameList;
-    private static Sprite[] baseArr, faceArr, glassesArr, hairArr, teethArr, tieArr, briocheArr, bagelArr, englishMuffinArr;
+    private static Sprite[] baseArr, faceArr, glassesArr, hairArr, teethArr, tieArr, briocheArr, bagelArr, englishMuffinArr, toppingsArr;
     
     private List<string> ReadTextDataToList(string textFileInput)
     {
@@ -34,6 +35,7 @@ public class FileIO : MonoBehaviour
         briocheArr = Resources.LoadAll<Sprite>("Art/Breads/Brioche");
         bagelArr = Resources.LoadAll<Sprite>("Art/Breads/Bagel");
         englishMuffinArr = Resources.LoadAll<Sprite>("Art/Breads/English_Muffin");
+        toppingsArr = Resources.LoadAll<Sprite>("Art/Toppings");
     }
 
     void Awake()
@@ -64,5 +66,40 @@ public class FileIO : MonoBehaviour
     public static Sprite[] GetEnglishMuffinSprites()
     {
         return englishMuffinArr;
+    }
+
+    public static Sprite[] GetToppingsSprites()
+    {
+        return toppingsArr;
+    }
+
+    public static Sprite[] GetToppingsSprites(Stack<Topping> toppings)
+    {
+        Sprite[] output = { };
+        Topping[] temp = toppings.ToArray();
+
+        for(int i = 0; i < toppings.Count; i++)
+        {
+            output[i] = ToppingNameToSprite(GetToppingsSprites(), temp[i]);
+        }
+
+        return output;
+    }
+
+    private static Sprite ToppingNameToSprite(Sprite[] toppingSprites, Topping topping)
+    {
+        Sprite output = null;
+        string toppingName = topping.ToString();
+
+        foreach(Sprite s in toppingSprites)
+        {
+            if(s.name.ToLower() == toppingName)
+            {
+                output = s;
+                break;
+            }
+        }
+
+        return output;
     }
 }

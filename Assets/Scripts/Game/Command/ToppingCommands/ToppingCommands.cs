@@ -1,255 +1,124 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Order;
 
-public class AddEggCommand : IToppingCommand
+public abstract class AddToppingCommand
 {
-    Sandwich sandwich;
-    ToppingHandler toppingHandler;
+    protected SandwichHandler sandwichHandler;
+    protected ToppingHandler toppingHandler;
+    protected Topping topping;
 
-    public AddEggCommand(Sandwich sandwich, ToppingHandler toppingHandler)
+    public AddToppingCommand(SandwichHandler sandwichHandler, ToppingHandler toppingHandler, Topping topping)
     {
-        this.sandwich = sandwich;
+        this.sandwichHandler = sandwichHandler;
         this.toppingHandler = toppingHandler;
+        this.topping = topping;
     }
 
     public void Execute()
     {
-        sandwich.AddTopping(Order.Topping.egg);
-        toppingHandler.AddCommand(this);
+        sandwichHandler.sandwich.AddTopping(topping);
+        toppingHandler.AddCommand((IToppingCommand) this);
     }
 
     public void Redo()
     {
-        sandwich.AddTopping(Order.Topping.egg);
+        sandwichHandler.sandwich.AddTopping(topping);
     }
 
     public void Undo()
     {
-        sandwich.RemoveTopping();
+        sandwichHandler.sandwich.RemoveTopping();
     }
 }
 
-public class AddAvocadoCommand : IToppingCommand
+public class AddEggCommand : AddToppingCommand, IToppingCommand
 {
-    Sandwich sandwich;
-    ToppingHandler toppingHandler;
-
-    public AddAvocadoCommand(Sandwich sandwich, ToppingHandler toppingHandler)
+    public AddEggCommand(SandwichHandler sandwichHandler, ToppingHandler toppingHandler, Topping topping) : base(sandwichHandler, toppingHandler, topping)
     {
-        this.sandwich = sandwich;
+        this.sandwichHandler = sandwichHandler;
         this.toppingHandler = toppingHandler;
-    }
-
-    public void Execute()
-    {
-        sandwich.AddTopping(Order.Topping.avocado);
-        toppingHandler.AddCommand(this);
-    }
-
-    public void Redo()
-    {
-        sandwich.AddTopping(Order.Topping.avocado);
-    }
-
-    public void Undo()
-    {
-        sandwich.RemoveTopping();
+        this.topping = topping;
     }
 }
 
-public class AddHamCommand : IToppingCommand
+public class AddAvocadoCommand : AddToppingCommand, IToppingCommand
 {
-    Sandwich sandwich;
-    ToppingHandler toppingHandler;
-
-    public AddHamCommand(Sandwich sandwich, ToppingHandler toppingHandler)
+    public AddAvocadoCommand(SandwichHandler sandwichHandler, ToppingHandler toppingHandler, Topping topping) : base(sandwichHandler, toppingHandler, topping)
     {
-        this.sandwich = sandwich;
+        this.sandwichHandler = sandwichHandler;
         this.toppingHandler = toppingHandler;
-    }
-
-    public void Execute()
-    {
-        sandwich.AddTopping(Order.Topping.ham);
-        toppingHandler.AddCommand(this);
-    }
-
-    public void Redo()
-    {
-        sandwich.AddTopping(Order.Topping.ham);
-    }
-
-    public void Undo()
-    {
-        sandwich.RemoveTopping();
+        this.topping = topping;
     }
 }
 
-public class AddCheeseCommand : IToppingCommand
+public class AddHamCommand : AddToppingCommand, IToppingCommand
 {
-    Sandwich sandwich;
-    ToppingHandler toppingHandler;
-
-    public AddCheeseCommand(Sandwich sandwich, ToppingHandler toppingHandler)
+    public AddHamCommand(SandwichHandler sandwichHandler, ToppingHandler toppingHandler, Topping topping) : base(sandwichHandler, toppingHandler, topping)
     {
-        this.sandwich = sandwich;
+        this.sandwichHandler = sandwichHandler;
         this.toppingHandler = toppingHandler;
-    }
-
-    public void Execute()
-    {
-        sandwich.AddTopping(Order.Topping.cheese);
-        toppingHandler.AddCommand(this);
-    }
-
-    public void Redo()
-    {
-        sandwich.AddTopping(Order.Topping.cheese);
-    }
-
-    public void Undo()
-    {
-        sandwich.RemoveTopping();
+        this.topping = topping;
     }
 }
 
-public class AddBBQSauceCommand : IToppingCommand
+public class AddCheeseCommand : AddToppingCommand, IToppingCommand
 {
-    Sandwich sandwich;
-    ToppingHandler toppingHandler;
-
-    public AddBBQSauceCommand(Sandwich sandwich, ToppingHandler toppingHandler)
+    public AddCheeseCommand(SandwichHandler sandwichHandler, ToppingHandler toppingHandler, Topping topping) : base(sandwichHandler, toppingHandler, topping)
     {
-        this.sandwich = sandwich;
+        this.sandwichHandler = sandwichHandler;
         this.toppingHandler = toppingHandler;
-    }
-
-    public void Execute()
-    {
-        sandwich.AddTopping(Order.Topping.bbq_sauce);
-        toppingHandler.AddCommand(this);
-    }
-
-    public void Redo()
-    {
-        sandwich.AddTopping(Order.Topping.bbq_sauce);
-    }
-
-    public void Undo()
-    {
-        sandwich.RemoveTopping();
+        this.topping = topping;
     }
 }
 
-public class AddKetchupCommand : IToppingCommand
+public class AddBBQSauceCommand : AddToppingCommand, IToppingCommand
 {
-    Sandwich sandwich;
-    ToppingHandler toppingHandler;
-
-    public AddKetchupCommand(Sandwich sandwich, ToppingHandler toppingHandler)
+    public AddBBQSauceCommand(SandwichHandler sandwichHandler, ToppingHandler toppingHandler, Topping topping) : base(sandwichHandler, toppingHandler, topping)
     {
-        this.sandwich = sandwich;
+        this.sandwichHandler = sandwichHandler;
         this.toppingHandler = toppingHandler;
-    }
-
-    public void Execute()
-    {
-        sandwich.AddTopping(Order.Topping.ketchup);
-        toppingHandler.AddCommand(this);
-    }
-
-    public void Redo()
-    {
-        sandwich.AddTopping(Order.Topping.ketchup);
-    }
-
-    public void Undo()
-    {
-        sandwich.RemoveTopping();
+        this.topping = topping;
     }
 }
 
-public class AddMayonnaiseCommand : IToppingCommand
+public class AddKetchupCommand : AddToppingCommand, IToppingCommand
 {
-    Sandwich sandwich;
-    ToppingHandler toppingHandler;
-
-    public AddMayonnaiseCommand(Sandwich sandwich, ToppingHandler toppingHandler)
+    public AddKetchupCommand(SandwichHandler sandwichHandler, ToppingHandler toppingHandler, Topping topping) : base(sandwichHandler, toppingHandler, topping)
     {
-        this.sandwich = sandwich;
+        this.sandwichHandler = sandwichHandler;
         this.toppingHandler = toppingHandler;
-    }
-
-    public void Execute()
-    {
-        sandwich.AddTopping(Order.Topping.mayonnaise);
-        toppingHandler.AddCommand(this);
-    }
-
-    public void Redo()
-    {
-        sandwich.AddTopping(Order.Topping.mayonnaise);
-    }
-
-    public void Undo()
-    {
-        sandwich.RemoveTopping();
+        this.topping = topping;
     }
 }
 
-public class AddTomatoCommand : IToppingCommand
+public class AddMayonnaiseCommand : AddToppingCommand, IToppingCommand
 {
-    Sandwich sandwich;
-    ToppingHandler toppingHandler;
-
-    public AddTomatoCommand(Sandwich sandwich, ToppingHandler toppingHandler)
+    public AddMayonnaiseCommand(SandwichHandler sandwichHandler, ToppingHandler toppingHandler, Topping topping) : base(sandwichHandler, toppingHandler, topping)
     {
-        this.sandwich = sandwich;
+        this.sandwichHandler = sandwichHandler;
         this.toppingHandler = toppingHandler;
-    }
-
-    public void Execute()
-    {
-        sandwich.AddTopping(Order.Topping.tomato);
-        toppingHandler.AddCommand(this);
-    }
-
-    public void Redo()
-    {
-        sandwich.AddTopping(Order.Topping.tomato);
-    }
-
-    public void Undo()
-    {
-        sandwich.RemoveTopping();
+        this.topping = topping;
     }
 }
 
-public class AddLettuceCommand : IToppingCommand
+public class AddTomatoCommand : AddToppingCommand, IToppingCommand
 {
-    Sandwich sandwich;
-    ToppingHandler toppingHandler;
-
-    public AddLettuceCommand(Sandwich sandwich, ToppingHandler toppingHandler)
+    public AddTomatoCommand(SandwichHandler sandwichHandler, ToppingHandler toppingHandler, Topping topping) : base(sandwichHandler, toppingHandler, topping)
     {
-        this.sandwich = sandwich;
+        this.sandwichHandler = sandwichHandler;
         this.toppingHandler = toppingHandler;
+        this.topping = topping;
     }
+}
 
-    public void Execute()
+public class AddLettuceCommand : AddToppingCommand, IToppingCommand
+{
+    public AddLettuceCommand(SandwichHandler sandwichHandler, ToppingHandler toppingHandler, Topping topping) : base(sandwichHandler, toppingHandler, topping)
     {
-        sandwich.AddTopping(Order.Topping.lettuce);
-        toppingHandler.AddCommand(this);
-    }
-
-    public void Redo()
-    {
-        sandwich.AddTopping(Order.Topping.lettuce);
-    }
-
-    public void Undo()
-    {
-        sandwich.RemoveTopping();
+        this.sandwichHandler = sandwichHandler;
+        this.toppingHandler = toppingHandler;
+        this.topping = topping;
     }
 }

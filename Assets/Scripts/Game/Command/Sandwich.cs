@@ -7,8 +7,6 @@ public class Sandwich : Container
 {
     private Order order = null;
 
-    private Stack<Topping> currentToppings = new Stack<Topping>();
-
     public Sandwich(Order order, Bread bread, ToastLevel toastLevel)
     {
         this.order = order;
@@ -18,7 +16,7 @@ public class Sandwich : Container
 
     public bool AddTopping(Topping topping)
     {
-        currentToppings.Push(topping);
+        toppings.Push(topping);
 
         if(order.GetToppings().Contains(topping))
             return true;
@@ -27,7 +25,7 @@ public class Sandwich : Container
 
     public Topping RemoveTopping()
     {
-        return currentToppings.Pop();
+        return toppings.Pop();
     }
 
     public bool IncreaseToastLevel()
@@ -82,14 +80,9 @@ public class Sandwich : Container
 
     #region getter setter
 
-    public Stack<Topping> GetCurrentToppings()
-    {
-        return currentToppings;
-    }
-
     public void SetCurrentToppings(Stack<Topping> currentToppings)
     {
-        this.currentToppings = currentToppings;
+        this.toppings = currentToppings;
     }
 
     #endregion

@@ -122,12 +122,7 @@ public class SandwichHandler : MonoBehaviour, IObserver
         UpdateBreadSprite(sandwich, sandwichObject);
     }
 
-    /// <summary>
-    /// update the bread sprite of the target gameobject given an order or a sandwich
-    /// </summary>
-    /// <param name="container">an order or a sandwich</param>
-    /// <param name="target">a gameobject in the scene</param>
-    public void UpdateBreadSprite(Container container, GameObject target)
+    public void UpdateBreadSprite(Container container, GameObject targetGameObject)
     {
         Bread bread = container.GetBread();
         ToastLevel toastLevel = container.GetToastLevel();
@@ -150,7 +145,18 @@ public class SandwichHandler : MonoBehaviour, IObserver
         }
 
         int levelInt = (int)Convert.ChangeType(toastLevel, toastLevel.GetTypeCode());
-        target.GetComponent<SpriteRenderer>().sprite = breadSprites[levelInt];
+        targetGameObject.GetComponent<SpriteRenderer>().sprite = breadSprites[levelInt];
+    }
+
+    public void UpdateToppingsSprites(Container container, List<GameObject> targetGameObjectList)
+    {
+        Stack<Topping> toppings = container.GetToppings();
+        Sprite[] toppingSprites = FileIO.GetToppingsSprites(toppings);
+
+        for(int i = 0; i < targetGameObjectList.Count; i++)
+        {
+            targetGameObjectList[i].GetComponent<SpriteRenderer>().sprite = toppingSprites[i];
+        }
     }
 
     #endregion

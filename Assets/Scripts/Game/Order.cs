@@ -8,17 +8,14 @@ public class Order : Container
 
     public static int minToppings = 1;
     public static int maxToppings = 5;
-
-    private List<Topping> toppings;
     private Customer customer;
 
     public Order()
     {
-        toppings = new List<Topping>();
         customer = null;
     }
 
-    public Order(Bread bread, ToastLevel toastLevel, List<Topping> toppings)
+    public Order(Bread bread, ToastLevel toastLevel, Stack<Topping> toppings)
     {
         this.bread = bread;
         this.toastLevel = toastLevel;
@@ -31,7 +28,7 @@ public class Order : Container
         Array values;
 
         Bread chosenBread;
-        List<Topping> chosenToppings = new List<Topping>();
+        Stack<Topping> chosenToppings = new Stack<Topping>();
         Topping chosentopping;
         ToastLevel chosenToastLevel;
 
@@ -45,7 +42,7 @@ public class Order : Container
             values = Enum.GetValues(typeof(Topping));
             chosentopping = (Topping)values.GetValue(GameController.r.Next(values.Length));
 
-            chosenToppings.Add(chosentopping);
+            chosenToppings.Push(chosentopping);
         }
 
         values = Enum.GetValues(typeof(ToastLevel));
@@ -57,11 +54,6 @@ public class Order : Container
     public void SetCustomer(Customer customer)
     {
         this.customer = customer;
-    }
-
-    public List<Topping> GetToppings()
-    {
-        return toppings;
     }
 
     #region enums
