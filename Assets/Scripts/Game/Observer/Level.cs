@@ -8,6 +8,7 @@ public class Level : MonoBehaviour
 {
     //TODO: scoring and stuff? idk
     private int level;
+    public TextMeshProUGUI displayDay;
 
     private float maxTimePerDay = 450f;
     private float currTime;
@@ -25,6 +26,7 @@ public class Level : MonoBehaviour
 
         kitchenPanel.SetActive(false);
         endDayStats.SetActive(false);
+        displayDay.text = level.ToString();
     }
 
     private void Update()

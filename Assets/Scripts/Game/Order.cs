@@ -9,7 +9,7 @@ public class Order
     [SerializeField] private Bread bread;
     [SerializeField] private ToastLevel toastLevel;
 
-    public static int minToppings = 1;
+    public static int minToppings = 4;
     public static int maxToppings = 5;
 
     [SerializeField] private List<Topping> toppings;

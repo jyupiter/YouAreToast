@@ -20,7 +20,7 @@ public class CustomerManager : MonoBehaviour
     public static GameObject currentCustomerObject;
 
     public GameObject customerInfoContainer;
-    public TextMeshProUGUI displayName;
+    public TextMeshProUGUI displayName, displayBread, displayToastLevel, displayToppings;
     public Slider currPatienceBar;
 
     void Awake()
@@ -71,6 +71,22 @@ public class CustomerManager : MonoBehaviour
         currentCustomer = c;
 
         displayName.text = c.GetCustomerName();
+        displayBread.text = c.GetOrder().GetBread().ToString();
+        displayToastLevel.text = c.GetOrder().GetToastLevel().ToString();
+        //displayToppings.text = c.GetOrder().GetToppings().ToString();
+        for (int i = 0; i < c.GetOrder().GetToppings().Count; i++)
+        {
+            print(c.GetOrder().GetToppings().Count);
+            if (i == c.GetOrder().GetToppings().Count)
+            {
+                displayToppings.text = c.GetOrder().GetToppings()[i].ToString();
+            }
+            else
+            {
+                displayToppings.text += c.GetOrder().GetToppings()[i].ToString();
+                displayToppings.text += "\n";
+            }
+        }
 
         List<int> spritesToUse = c.GetSpritesToUse();
         List<Sprite> spritesToAssign = Customer.IntsToSprites(spritesToUse, FileIO.GetCustomerSpriteLists());
