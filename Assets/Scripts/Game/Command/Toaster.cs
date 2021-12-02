@@ -5,6 +5,7 @@ using UnityEngine;
 public class Toaster : MonoBehaviour
 {
     private IEnumerator coroutine;
+    bool canContinueToasting = true;
 
     public void StartToasting(Sandwich sandwich)
     {
@@ -14,12 +15,11 @@ public class Toaster : MonoBehaviour
 
     IEnumerator ToastWithDelay(float time, Sandwich sandwich)
     {
-        bool canContinueToasting = true;
-
-        yield return new WaitForSeconds(time);
-
-        while(canContinueToasting == true)
+        while(canContinueToasting)
+        {
+            yield return new WaitForSeconds(time);
             canContinueToasting = sandwich.IncreaseToastLevel();
+        }
     }
 
     public void StopToasting()
