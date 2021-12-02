@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Order;
 
-public class Sandwich
+public class Sandwich : Containers
 {
     private Order order = null;
 

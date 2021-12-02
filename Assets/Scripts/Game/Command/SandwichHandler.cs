@@ -74,7 +74,7 @@ public class SandwichHandler : MonoBehaviour, IObserver
                 toasterPositionMarker.transform.position,
                 Quaternion.identity
             );
-        UpdateBreadSprite();
+        UpdateBreadSprite(sandwich);
         toaster.StartToasting(sandwich);
         sandwichState = SandwichState.toasted;
         return true;
@@ -119,14 +119,14 @@ public class SandwichHandler : MonoBehaviour, IObserver
 
     void IObserver.Notify(string aMsg)
     {
-        UpdateBreadSprite();
+        UpdateBreadSprite(sandwich);
     }
 
-    private void UpdateBreadSprite()
+    public void UpdateBreadSprite(Sandwich sandwich)
     {
         Bread bread = sandwich.GetBread();
         ToastLevel toastLevel = sandwich.GetToastLevel();
-        Sprite[] breadSprites = new Sprite[] { };
+        Sprite[] breadSprites;
 
         switch(bread)
         {

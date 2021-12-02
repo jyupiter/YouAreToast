@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Order
+public class Order : Containers
 {
 
     [SerializeField] private Bread bread;
