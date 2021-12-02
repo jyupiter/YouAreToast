@@ -27,6 +27,7 @@ public class SandwichHandler : MonoBehaviour
                 ToastLevel.untoasted
             );
         NotifyObservers("started brioche sandwich");
+        StartToaster();
     }
 
     public void StartEnglishMuffinSandwich()
@@ -39,6 +40,7 @@ public class SandwichHandler : MonoBehaviour
                 ToastLevel.untoasted
             );
         NotifyObservers("started english muffin sandwich");
+        StartToaster();
     }
 
     public void StartBagelSandwich()
@@ -51,6 +53,7 @@ public class SandwichHandler : MonoBehaviour
                 ToastLevel.untoasted
             );
         NotifyObservers("started bagel sandwich");
+        StartToaster();
     }
 
     #endregion
@@ -58,7 +61,13 @@ public class SandwichHandler : MonoBehaviour
     public bool StartToaster() // require player input. mouse button 0.
     {
         sandwichState = SandwichState.toasted;
-        sandwichObject = Instantiate(prefab, toasterPositionMarker.transform.position, Quaternion.identity);
+        sandwichObject =
+            Instantiate
+            (
+                prefab,
+                toasterPositionMarker.transform.position,
+                Quaternion.identity
+            );
         toaster.StartToasting(sandwich);
         return true;
     }
