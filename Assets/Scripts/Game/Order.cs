@@ -9,7 +9,7 @@ public class Order
     [SerializeField] private Bread bread;
     [SerializeField] private ToastLevel toastLevel;
 
-    public static int minToppings = 4;
+    public static int minToppings = 1;
     public static int maxToppings = 5;
 
     [SerializeField] private List<Topping> toppings;
@@ -50,7 +50,6 @@ public class Order
             values = Enum.GetValues(typeof(Topping));
             chosentopping = (Topping)values.GetValue(GameController.r.Next(values.Length));
 
-            chosenToppings = new List<Topping>();
             chosenToppings.Add(chosentopping);
         }
 
