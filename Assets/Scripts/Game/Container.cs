@@ -7,6 +7,7 @@ public abstract class Container
 {
     protected Bread bread = Bread.bagel;
     protected ToastLevel toastLevel = ToastLevel.untoasted;
+    protected Stack<Topping> toppings;
 
     public Container() { }
 
@@ -14,6 +15,7 @@ public abstract class Container
     {
         bread = Bread.bagel;
         toastLevel = ToastLevel.untoasted;
+        toppings = new Stack<Topping>();
     }
 
     public Bread GetBread()
@@ -34,5 +36,10 @@ public abstract class Container
     public void SetToastLevel(ToastLevel toastLevel)
     {
         this.toastLevel = toastLevel;
+    }
+
+    public Stack<Topping> GetToppings()
+    {
+        return toppings;
     }
 }

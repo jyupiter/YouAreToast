@@ -35,55 +35,55 @@ public class ToppingHandler : MonoBehaviour
 
     public void AddEgg()
     {
-        IToppingCommand command = new AddEggCommand(sandwichHandler.sandwich, this);
-        AddCommand(command);
+        IToppingCommand command = new AddEggCommand(sandwichHandler, this, Order.Topping.egg);
+        command.Execute();
     }
 
     public void AddAvocado()
     {
-        IToppingCommand command = new AddAvocadoCommand(sandwichHandler.sandwich, this);
-        AddCommand(command);
+        IToppingCommand command = new AddAvocadoCommand(sandwichHandler, this, Order.Topping.avocado);
+        command.Execute();
     }
 
     public void AddHam()
     {
-        IToppingCommand command = new AddHamCommand(sandwichHandler.sandwich, this);
-        AddCommand(command);
+        IToppingCommand command = new AddHamCommand(sandwichHandler, this, Order.Topping.ham);
+        command.Execute();
     }
 
     public void AddCheese()
     {
-        IToppingCommand command = new AddCheeseCommand(sandwichHandler.sandwich, this);
-        AddCommand(command);
+        IToppingCommand command = new AddCheeseCommand(sandwichHandler, this, Order.Topping.cheese);
+        command.Execute();
     }
 
     public void AddBBQSauce()
     {
-        IToppingCommand command = new AddBBQSauceCommand(sandwichHandler.sandwich, this);
-        AddCommand(command);
+        IToppingCommand command = new AddBBQSauceCommand(sandwichHandler, this, Order.Topping.bbq_sauce);
+        command.Execute();
     }
 
     public void AddKetchup()
     {
-        IToppingCommand command = new AddKetchupCommand(sandwichHandler.sandwich, this);
-        AddCommand(command);
+        IToppingCommand command = new AddKetchupCommand(sandwichHandler, this, Order.Topping.ketchup);
+        command.Execute();
     }
 
     public void AddMayonnaise()
     {
-        IToppingCommand command = new AddMayonnaiseCommand(sandwichHandler.sandwich, this);
-        AddCommand(command);
+        IToppingCommand command = new AddMayonnaiseCommand(sandwichHandler, this, Order.Topping.mayonnaise);
+        command.Execute();
     }
 
     public void AddTomato()
     {
-        IToppingCommand command = new AddTomatoCommand(sandwichHandler.sandwich, this);
-        AddCommand(command);
+        IToppingCommand command = new AddTomatoCommand(sandwichHandler, this, Order.Topping.tomato);
+        command.Execute();
     }
 
     public void AddLettuce()
     {
-        IToppingCommand command = new AddLettuceCommand(sandwichHandler.sandwich, this);
-        AddCommand(command);
+        IToppingCommand command = new AddLettuceCommand(sandwichHandler, this, Order.Topping.lettuce);
+        command.Execute();
     }
 }
