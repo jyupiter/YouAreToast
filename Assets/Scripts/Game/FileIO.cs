@@ -75,7 +75,7 @@ public class FileIO : MonoBehaviour
 
     public static Sprite[] GetToppingsSprites(Stack<Topping> toppings)
     {
-        Sprite[] output = { };
+        Sprite[] output = new Sprite[toppings.Count];
         Topping[] temp = toppings.ToArray();
 
         for(int i = 0; i < toppings.Count; i++)
