@@ -7,26 +7,33 @@ using TMPro;
 public class Level : MonoBehaviour
 {
     //TODO: scoring and stuff? idk
+    private int level;
 
     private float maxTimePerDay = 450f;
-
-    public Image maxTime, currTime;
+    private float currTime;
+    public Image currTimeImage;
 
     private bool inKitchen;
     public GameObject kitchenPanel;
+    public GameObject endDayStats;
 
     private void Start()
     {
-        kitchenPanel.SetActive(false);
+        level = 1;
+        currTime = maxTimePerDay;
         inKitchen = false;
+
+        kitchenPanel.SetActive(false);
+        endDayStats.SetActive(false);
     }
 
     private void Update()
     {
-        maxTimePerDay -= Time.deltaTime;
-        if (maxTimePerDay >= 0)
+        currTime -= Time.deltaTime;
+        currTimeImage.fillAmount = currTime / maxTimePerDay;
+        if (currTime <= 0)
         {
-            print("Day ended");
+            endDayStats.SetActive(true);
         }
     }
 
