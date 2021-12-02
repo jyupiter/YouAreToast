@@ -13,9 +13,10 @@ public class Patience : MonoBehaviour, ICustomerStates
 
     public SpriteRenderer expression;
 
+    [HideInInspector] public CustomerManager cm;
+
     public void CustomerHappy()
     {
-        Debug.Log("Customer is happy");
         expression.sprite = FileIO.GetSpriteLists()[1][0];
         //TODO: When toast is given to customer: Compare product with expectation.
             //If correct order is given, give high tips
@@ -23,7 +24,6 @@ public class Patience : MonoBehaviour, ICustomerStates
     }
     public void CustomerImpatient()
     {
-        Debug.Log("Customer is impatient");
         expression.sprite = FileIO.GetSpriteLists()[1][1];
         //TODO: When toast is given to customer: Compare product with expectation.
         //If correct order is given, give small tips
@@ -31,14 +31,18 @@ public class Patience : MonoBehaviour, ICustomerStates
     }
     public void CustomerAngry()
     {
-        Debug.Log("Customer is angry");
         expression.sprite = FileIO.GetSpriteLists()[1][2];
         //TODO: When toast is given to customer: Compare product with expectation.
         //If correct order is given, give no tips
         //If wrong order, dont even pay for the toast.
     }
+    public void CustomerLeave()
+    {
+        cm.HideThisCustomer();
+    }
     public void Awake()
     {
+        cm = GameObject.Find("Scripts").GetComponent<CustomerManager>();
         randomPatience = GameController.r.Next(minPatience, maxPatience);
         currPatience = randomPatience;
     }
@@ -49,8 +53,11 @@ public class Patience : MonoBehaviour, ICustomerStates
             currPatience -= Time.deltaTime;
         else
             currPatience = 0;
-
-        if (currPatience <= randomPatience / 3)
+        if (currPatience == 0)
+        {
+            CustomerLeave();
+        }
+        else if (currPatience <= randomPatience / 3)
             CustomerAngry();
         else
             if (currPatience < randomPatience / 3 * 2)
