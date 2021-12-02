@@ -20,6 +20,8 @@ public class SandwichHandler : MonoBehaviour, IObserver
 
     public void StartBriocheSandwich()
     {
+        if(sandwich != null)
+            return;
         sandwich =
             new Sandwich
             (
@@ -33,6 +35,8 @@ public class SandwichHandler : MonoBehaviour, IObserver
 
     public void StartEnglishMuffinSandwich()
     {
+        if(sandwich != null)
+            return;
         sandwich =
             new Sandwich
             (
@@ -46,6 +50,8 @@ public class SandwichHandler : MonoBehaviour, IObserver
 
     public void StartBagelSandwich()
     {
+        if(sandwich != null)
+            return;
         sandwich =
             new Sandwich
             (
@@ -59,9 +65,8 @@ public class SandwichHandler : MonoBehaviour, IObserver
 
     #endregion
 
-    public bool StartToaster() // require player input. mouse button 0.
+    public bool StartToaster()
     {
-        sandwichState = SandwichState.toasted;
         sandwichObject =
             Instantiate
             (
@@ -70,22 +75,24 @@ public class SandwichHandler : MonoBehaviour, IObserver
                 Quaternion.identity
             );
         toaster.StartToasting(sandwich);
+        sandwichState = SandwichState.toasted;
         return true;
     }
 
-    public bool MoveBread() // player input.
+    public bool MoveBread()
     {
-        sandwichState = SandwichState.complete;
         toaster.StopToasting();
         sandwichObject.transform.position = platePositionMarker.transform.position;
         return true;
     }
 
+    //TODO: add method to mark sandwich as complete
+
     public bool SubmitSandwich()
     {
-        sandwichState = SandwichState.fresh;
         //TODO: do something in Level.cs
         Destroy(sandwichObject);
+        sandwichState = SandwichState.fresh;
         return true;
     }
 

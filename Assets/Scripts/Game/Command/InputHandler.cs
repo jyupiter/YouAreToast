@@ -27,12 +27,21 @@ public class InputHandler : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButton(0))
+        if(Input.GetMouseButtonUp(0))
         {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
+            if(hit)
+            {
+                if(hit.collider.gameObject.name.ToLower().Contains("bread (clone)"))
+                {
+                    if(sandwichHandler.sandwichState == SandwichState.toasted)
+                        MoveBread?.Execute();
+                }
+            }
+
             if(sandwichHandler.sandwichState == SandwichState.fresh)
                 StartToasting?.Execute();
-            if(sandwichHandler.sandwichState == SandwichState.toasted)
-                MoveBread?.Execute();
             if(sandwichHandler.sandwichState == SandwichState.complete)
                 SubmitSandWich?.Execute();
         }
