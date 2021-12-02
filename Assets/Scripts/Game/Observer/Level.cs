@@ -7,7 +7,6 @@ using TMPro;
 
 public class Level : MonoBehaviour
 {
-    //TODO: scoring and stuff? idk
     private int level;
     public TextMeshProUGUI displayDay;
 
