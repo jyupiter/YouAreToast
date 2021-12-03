@@ -2716,6 +2716,7 @@ MonoBehaviour:
   currTimeImage: {fileID: 1713757920}
   kitchenPanel: {fileID: 972218436}
   endDayStats: {fileID: 1242232915}
+  textCanvas: {fileID: 835143332}
 --- !u!114 &491854686
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ public class SandwichHandler : MonoBehaviour, IObserver
                 Bread.brioche,
                 ToastLevel.untoasted
             );
-        NotifyObservers("started brioche sandwich");
+        Notify("started brioche sandwich");
         StartToaster();
     }
 
@@ -44,7 +44,7 @@ public class SandwichHandler : MonoBehaviour, IObserver
                 Bread.english_muffin,
                 ToastLevel.untoasted
             );
-        NotifyObservers("started english muffin sandwich");
+        Notify("started english muffin sandwich");
         StartToaster();
     }
 
@@ -59,7 +59,7 @@ public class SandwichHandler : MonoBehaviour, IObserver
                 Bread.bagel,
                 ToastLevel.untoasted
             );
-        NotifyObservers("started bagel sandwich");
+        Notify("started bagel sandwich");
         StartToaster();
     }
 
@@ -89,7 +89,7 @@ public class SandwichHandler : MonoBehaviour, IObserver
 
     public bool SubmitSandwich()
     {
-        //TODO: do scoring in level.cs
+        //TODO: do scoring in score.cs
         ResetSandwichHandler();
         return true;
     }
@@ -157,8 +157,8 @@ public class SandwichHandler : MonoBehaviour, IObserver
 
     #region event system
 
-    private delegate void Notify(string msg);
-    private static event Notify NotifyEvent;
+    private delegate void NotifyMessage(string msg);
+    private static event NotifyMessage NotifyEvent;
 
     public static void RegisterObserver(IObserver aObserver)
     {
@@ -170,14 +170,9 @@ public class SandwichHandler : MonoBehaviour, IObserver
         NotifyEvent -= aObserver.Notify;
     }
 
-    private static void NotifyObservers(string aMsg)
+    public void Notify(string aMsg)
     {
         NotifyEvent(aMsg);
-    }
-
-    void IObserver.Notify(string aMsg)
-    {
-        UpdateBreadSprite(sandwich, sandwichObject);
     }
 
     #endregion
