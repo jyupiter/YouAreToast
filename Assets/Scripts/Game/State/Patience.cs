@@ -34,6 +34,7 @@ public class Patience : PatienceStates
             else
                 CustomerHappy();
     }
+
     public void ResetPatienceMeter()
     {
         randomPatience = GameController.r.Next(minPatience, maxPatience);
