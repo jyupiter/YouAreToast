@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace ObserverDemo
 {
-    public class Enemy : MonoBehaviour, IObserver
+    public class Enemy : MonoBehaviour, IOnReceiveNotificationEvent
     {
         public Text enemyLabel;
         private int hitCount = 0;
@@ -20,7 +20,7 @@ namespace ObserverDemo
             enemyLabel.text = aReactionText;
         }
 
-        public void Notify(string aMsg)
+        public void UpdateNotification(string aMsg)
         {
             switch (aMsg)
             {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ObserverDemo
 {
-    public class Game : MonoBehaviour, IObserver
+    public class Game : MonoBehaviour, IOnReceiveNotificationEvent
     {
         public GameObject gameOverObj;
 
@@ -19,7 +19,7 @@ namespace ObserverDemo
             gameOverObj.SetActive(true);
         }
 
-        public void Notify(string aMsg)
+        public void UpdateNotification(string aMsg)
         {
             switch (aMsg)
             {

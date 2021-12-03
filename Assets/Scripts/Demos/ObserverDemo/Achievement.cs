@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace ObserverDemo
 {
-    public class Achievement : MonoBehaviour, IObserver
+    public class Achievement : MonoBehaviour, IOnReceiveNotificationEvent
     {
         public Text achievementLabel;
         private List<string> unlockedList = new List<string>();
@@ -25,7 +25,7 @@ namespace ObserverDemo
             else achievementLabel.text = "";
         }
 
-        public void Notify(string aMsg)
+        public void UpdateNotification(string aMsg)
         {
             UnlockAchievement(aMsg);
         }

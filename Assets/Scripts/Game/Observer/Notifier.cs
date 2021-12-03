@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Notifier : MonoBehaviour, IObserver
+public class Notifier : MonoBehaviour, IOnReceiveNotificationEvent
 {
-    public void Notify(string aMsg)
+    public void UpdateNotification(string aMsg)
     {
         Debug.Log(aMsg);
     }
