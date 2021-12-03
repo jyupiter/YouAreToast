@@ -10,7 +10,9 @@ public class Score : MonoBehaviour, IOnSandwichChangeStateEvent
 {
     public static int score = 0;
     public TextMeshProUGUI finalScore;
+
     [HideInInspector] public CustomerManager cm;
+
     private void Awake()
     {
         cm = GameObject.Find("Scripts").GetComponent<CustomerManager>();
@@ -24,7 +26,6 @@ public class Score : MonoBehaviour, IOnSandwichChangeStateEvent
             sandwichHandler.Reset();
             //Customer leaves after receiving sandwich
             cm.HideThisCustomer();
-            //TODO: New customer needs to come in
         }
     }
 

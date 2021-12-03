@@ -12,6 +12,8 @@ public class Level : MonoBehaviour
     private int level;
     public TextMeshProUGUI displayDay;
 
+    public static bool dayHasEnded = false;
+
     private float maxTimePerDay;
     private float currTime;
     public Image currTimeImage;
@@ -27,7 +29,7 @@ public class Level : MonoBehaviour
     {
         cm = gameObject.GetComponent<CustomerManager>();
         level = 1;
-        maxTimePerDay = 20f;
+        maxTimePerDay = 200f;
         currTime = maxTimePerDay;
         inKitchen = false;
 
@@ -43,7 +45,8 @@ public class Level : MonoBehaviour
         currTimeImage.fillAmount = currTime / maxTimePerDay;
         if (currTime <= 0)
         {
-            cm.HideThisCustomer();
+            dayHasEnded = true;
+            cm.StopCustomerSpawn();
             endDayStats.SetActive(true);
         }
     }
@@ -76,7 +79,6 @@ public class Level : MonoBehaviour
             tooltipPanel.SetActive(false);
             inTooltip = false;
         }
-
     }
 
     public void Menu()
