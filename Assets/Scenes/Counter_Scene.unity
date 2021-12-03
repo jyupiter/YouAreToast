@@ -2965,7 +2965,7 @@ GameObject:
   - component: {fileID: 491854692}
   m_Layer: 0
   m_Name: Scripts
-  m_TagString: Untagged
+  m_TagString: Scripts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2988,6 +2988,7 @@ MonoBehaviour:
   tooltipPanel: {fileID: 1220164867}
   endDayStats: {fileID: 1242232915}
   textCanvas: {fileID: 835143332}
+  customerInfo: {fileID: 1336745450}
 --- !u!114 &491854686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3042,6 +3043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6840412d87ca9574a8e7f2d3b3e4374e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: {fileID: 491854691}
   customerSpawnPosition: {fileID: 1848533864}
   customerPrefab: {fileID: 6777425682606258512, guid: d60180d7c73a24a468f6f5c98e8aa8dd, type: 3}
   customerInfoContainer: {fileID: 1336745450}
@@ -3110,7 +3112,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expression: {fileID: 0}
-  cm: {fileID: 491854689}
 --- !u!1 &493271781
 GameObject:
   m_ObjectHideFlags: 0
