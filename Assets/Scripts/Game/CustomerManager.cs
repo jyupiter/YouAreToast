@@ -138,14 +138,14 @@ public class CustomerManager : MonoBehaviour
     private delegate void Notify(string msg);
     private static event Notify NotifyEvent;
 
-    public static void RegisterObserver(IObserver aObserver)
+    public static void RegisterObserver(IOnReceiveNotificationEvent aObserver)
     {
-        NotifyEvent += aObserver.Notify;
+        NotifyEvent += aObserver.UpdateNotification;
     }
 
-    public static void UnregisterObserver(IObserver aObserver)
+    public static void UnregisterObserver(IOnReceiveNotificationEvent aObserver)
     {
-        NotifyEvent -= aObserver.Notify;
+        NotifyEvent -= aObserver.UpdateNotification;
     }
 
     private static void NotifyObservers(string aMsg)

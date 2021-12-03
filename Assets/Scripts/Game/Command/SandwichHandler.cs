@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Order;
 
-public class SandwichHandler : MonoBehaviour, IObserver
+public class SandwichHandler : MonoBehaviour, IOnReceiveNotificationEvent, IOnSandwichChangeStateEvent
 {
     [HideInInspector] public Sandwich sandwich = null;
     public SandwichState sandwichState = SandwichState.fresh;
@@ -29,7 +29,7 @@ public class SandwichHandler : MonoBehaviour, IObserver
                 Bread.brioche,
                 ToastLevel.untoasted
             );
-        Notify("started brioche sandwich");
+        UpdateNotification("started brioche sandwich");
         StartToaster();
     }
 
@@ -44,7 +44,7 @@ public class SandwichHandler : MonoBehaviour, IObserver
                 Bread.english_muffin,
                 ToastLevel.untoasted
             );
-        Notify("started english muffin sandwich");
+        UpdateNotification("started english muffin sandwich");
         StartToaster();
     }
 
@@ -59,7 +59,7 @@ public class SandwichHandler : MonoBehaviour, IObserver
                 Bread.bagel,
                 ToastLevel.untoasted
             );
-        Notify("started bagel sandwich");
+        UpdateNotification("started bagel sandwich");
         StartToaster();
     }
 
@@ -158,21 +158,39 @@ public class SandwichHandler : MonoBehaviour, IObserver
     #region event system
 
     private delegate void NotifyMessage(string msg);
-    private static event NotifyMessage NotifyEvent;
+    private static event NotifyMessage NotifyMessageEvent;
 
-    public static void RegisterObserver(IObserver aObserver)
+    public static void RegisterNotificationObserver(IOnReceiveNotificationEvent aObserver)
     {
-        NotifyEvent += aObserver.Notify;
+        NotifyMessageEvent += aObserver.UpdateNotification;
     }
 
-    public static void UnregisterObserver(IObserver aObserver)
+    public static void UnregisterNotificationObserver(IOnReceiveNotificationEvent aObserver)
     {
-        NotifyEvent -= aObserver.Notify;
+        NotifyMessageEvent -= aObserver.UpdateNotification;
     }
 
-    public void Notify(string aMsg)
+    public void UpdateNotification(string aMsg)
     {
-        NotifyEvent(aMsg);
+        NotifyMessageEvent(aMsg);
+    }
+
+    private delegate void NotifyState(SandwichState sandwichState);
+    private static event NotifyState NotifyStateEvent;
+
+    public static void RegisterStateObserver(IOnSandwichChangeStateEvent aObserver)
+    {
+        NotifyStateEvent += aObserver.UpdateSandwichState;
+    }
+
+    public static void UnregisterStateObserver(IOnSandwichChangeStateEvent aObserver)
+    {
+        NotifyStateEvent -= aObserver.UpdateSandwichState;
+    }
+
+    public void UpdateSandwichState(SandwichState sandwichState)
+    {
+        NotifyStateEvent(sandwichState);
     }
 
     #endregion

@@ -9,7 +9,7 @@ namespace ObserverDemo
         private int hp = 10;
 
         //list of observers
-        private List<IObserver> observerList = new List<IObserver>();
+        private List<IOnReceiveNotificationEvent> observerList = new List<IOnReceiveNotificationEvent>();
 
         //using delegate and event for observers
         private delegate void Notify(string msg);
@@ -32,7 +32,7 @@ namespace ObserverDemo
             else NotifyObservers("HIT");
         }
 
-        public void RegisterObserver(IObserver aObserver)
+        public void RegisterObserver(IOnReceiveNotificationEvent aObserver)
         {
             //add observer to event
             //NotifyEvent += aObserver.Notify;
@@ -45,7 +45,7 @@ namespace ObserverDemo
             }
         }
 
-        public void UnregisterObserver(IObserver aObserver)
+        public void UnregisterObserver(IOnReceiveNotificationEvent aObserver)
         {
             //remove observer from event
             //NotifyEvent -= aObserver.Notify;
@@ -60,9 +60,9 @@ namespace ObserverDemo
             //NotifyEvent(aMsg);
 
             //notify observer list
-            foreach (IObserver observer in observerList)
+            foreach (IOnReceiveNotificationEvent observer in observerList)
             {
-                observer.Notify(aMsg);
+                observer.UpdateNotification(aMsg);
             }
         }
     }
