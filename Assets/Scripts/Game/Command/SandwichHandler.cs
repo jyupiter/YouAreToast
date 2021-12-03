@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static Order;
 
@@ -11,6 +12,7 @@ public class SandwichHandler : MonoBehaviour, IOnReceiveNotificationEvent, IOnSa
     public Toaster toaster;
 
     public GameObject prefab;
+    public TextMeshProUGUI toastLevelText;
 
     [HideInInspector] public GameObject sandwichObject;
     public GameObject toasterPositionMarker;
@@ -176,7 +178,10 @@ public class SandwichHandler : MonoBehaviour, IOnReceiveNotificationEvent, IOnSa
     public void UpdateNotification(string aMsg)
     {
         if(sandwichObject != null)
+        {
             UpdateBreadSprite(sandwich, sandwichObject);
+            toastLevelText.text = sandwich.GetToastLevel().ToString();
+        }
         NotifyMessageEvent(aMsg);
     }
 
