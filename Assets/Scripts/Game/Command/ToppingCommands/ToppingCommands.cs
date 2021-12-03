@@ -14,7 +14,6 @@ public abstract class AddToppingCommand
         this.sandwichHandler = sandwichHandler;
         this.toppingHandler = toppingHandler;
         this.topping = topping;
-        sandwichHandler.sandwichState = SandwichHandler.SandwichState.complete;
     }
 
     public void Execute()
@@ -25,12 +24,16 @@ public abstract class AddToppingCommand
 
     public void Redo()
     {
+        if(sandwichHandler.sandwichState != SandwichHandler.SandwichState.complete)
+            return;
         sandwichHandler.sandwich.AddTopping(topping);
         Refresh();
     }
 
     public void Undo()
     {
+        if(sandwichHandler.sandwichState != SandwichHandler.SandwichState.complete)
+            return;
         sandwichHandler.sandwich.RemoveTopping();
         Refresh();
     }
