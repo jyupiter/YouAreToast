@@ -14,6 +14,7 @@ public abstract class AddToppingCommand
         this.sandwichHandler = sandwichHandler;
         this.toppingHandler = toppingHandler;
         this.topping = topping;
+        sandwichHandler.sandwichState = SandwichHandler.SandwichState.complete;
     }
 
     public void Execute()

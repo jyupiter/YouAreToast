@@ -9,7 +9,6 @@ public class InputHandler : MonoBehaviour
 
     public ICommand StartToasting { get; set; }
     public ICommand MoveBread { get; set; }
-    public ICommand SubmitSandWich { get; set; }
 
     public Stack<ICommand> commands = new Stack<ICommand>();
 
@@ -19,7 +18,6 @@ public class InputHandler : MonoBehaviour
 
         StartToasting = new StartToasterCommand(this);
         MoveBread = new MoveBreadCommand(this);
-        SubmitSandWich = new SubmitSandwichCommand(this);
 
         commands = new Stack<ICommand>();
     }
@@ -33,7 +31,6 @@ public class InputHandler : MonoBehaviour
             if(hit)
             {
                 GameObject test = hit.collider.gameObject;
-                print(test.tag);
                 if(test.CompareTag("Bread"))
                 {
                     if(sandwichHandler.sandwichState == SandwichState.fresh)
@@ -43,11 +40,6 @@ public class InputHandler : MonoBehaviour
                 {
                     if(sandwichHandler.sandwichState == SandwichState.toasted)
                         MoveBread?.Execute();
-                }
-                else if(test.CompareTag("Submit"))
-                {
-                    if(sandwichHandler.sandwichState == SandwichState.complete)
-                        SubmitSandWich?.Execute();
                 }
             }
         }

@@ -14,9 +14,6 @@ public class StartToasterCommand : ICommand
 
     public void Execute()
     {
-        if(inputHandler.sandwichHandler.SubmitSandwich())
-        {
-            inputHandler.commands.Push(this);
-        }
+        inputHandler.sandwichHandler.SubmitSandwich();
     }
 }

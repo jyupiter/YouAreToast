@@ -5,5 +5,5 @@ using static SandwichHandler;
 
 public interface IOnSandwichChangeStateEvent
 {
-    void UpdateSandwichState(SandwichState sandwichState);
+    void UpdateSandwichState(SandwichHandler sandwichHandler);
 }
