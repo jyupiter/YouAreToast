@@ -8,6 +8,7 @@ using TMPro;
 public class Level : MonoBehaviour
 {
     CustomerManager cm;
+    SandwichHandler sandwichHandler;
 
     private int level;
     public TextMeshProUGUI displayDay;
@@ -24,15 +25,18 @@ public class Level : MonoBehaviour
     public GameObject endDayStats;
 
     public GameObject textCanvas;
+    public TextMeshProUGUI toastLevelText;
     public GameObject customerInfo;
 
     private void Start()
     {
         cm = gameObject.GetComponent<CustomerManager>();
+        sandwichHandler = gameObject.GetComponent<SandwichHandler>();
         level = 1;
         maxTimePerDay = 300f;
         currTime = maxTimePerDay;
         inKitchen = false;
+        textCanvas.SetActive(false);
 
         kitchenPanel.SetActive(false);
         tooltipPanel.SetActive(false);
@@ -51,6 +55,7 @@ public class Level : MonoBehaviour
             cm.HideThisCustomer(); //TODO This causes customers to not spawn when restarted, but fixes end of day layering issues
             endDayStats.SetActive(true);
         }
+        toastLevelText.text = sandwichHandler.sandwich.GetToastLevel().ToString();
     }
 
     public void EnterOrExitKitchen()
