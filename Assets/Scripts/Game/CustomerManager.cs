@@ -125,6 +125,7 @@ public class CustomerManager : MonoBehaviour
             currentCustomer = null;
         }
         hasCustomer = false;
+        sandwichHandler.Reset();
     }
 
     public void UpdatePatienceText()

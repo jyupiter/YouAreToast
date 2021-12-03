@@ -84,6 +84,7 @@ public class SandwichHandler : MonoBehaviour, IOnReceiveNotificationEvent, IOnSa
     {
         toaster.StopToasting();
         sandwichObject.transform.position = platePositionMarker.transform.position;
+        sandwichState = SandwichState.complete;
         return true;
     }
 
