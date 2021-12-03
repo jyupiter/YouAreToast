@@ -18,6 +18,8 @@ public class Level : MonoBehaviour
     public GameObject kitchenPanel;
     public GameObject endDayStats;
 
+    public GameObject textCanvas;
+
     private void Start()
     {
         level = 1;
@@ -45,11 +47,13 @@ public class Level : MonoBehaviour
         if (inKitchen)
         {
             kitchenPanel.SetActive(false);
+            textCanvas.SetActive(false);
             inKitchen = false;
         }
         else
         {
             kitchenPanel.SetActive(true);
+            textCanvas.SetActive(true);
             inKitchen = true;
         }
     }
