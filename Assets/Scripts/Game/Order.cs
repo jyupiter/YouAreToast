@@ -15,7 +15,7 @@ public class Order : Container
         customer = null;
     }
 
-    public Order(Bread bread, ToastLevel toastLevel, Stack<Topping> toppings)
+    public Order(Bread bread, ToastLevel toastLevel, Stack<Topping> toppings) : base(bread, toastLevel)
     {
         this.bread = bread;
         this.toastLevel = toastLevel;
