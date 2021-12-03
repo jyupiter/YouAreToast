@@ -8,7 +8,6 @@ using TMPro;
 public class Level : MonoBehaviour
 {
     CustomerManager cm;
-    SandwichHandler sandwichHandler;
 
     private int level;
     public TextMeshProUGUI displayDay;
@@ -30,7 +29,6 @@ public class Level : MonoBehaviour
     private void Start()
     {
         cm = gameObject.GetComponent<CustomerManager>();
-        sandwichHandler = gameObject.GetComponent<SandwichHandler>();
         level = 1;
         maxTimePerDay = 300f;
         currTime = maxTimePerDay;

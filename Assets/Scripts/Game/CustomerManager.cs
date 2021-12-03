@@ -137,7 +137,8 @@ public class CustomerManager : MonoBehaviour
     {
         NotifyObservers("this customer is leaving");
 
-        currentCustomerObject.SetActive(false);
+        Destroy(currentCustomerObject);
+        currentCustomerObject = null;
         customerInfoContainer.SetActive(false);
 
         if (currentCustomer != null)

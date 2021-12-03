@@ -11,7 +11,7 @@ public class Patience : PatienceStates
     public static float randomPatience;
     public static float currPatience;
 
-    public void Awake()
+    public void Start()
     {
         ResetPatienceMeter();
     }
