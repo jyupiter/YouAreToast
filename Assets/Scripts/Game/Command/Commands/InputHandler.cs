@@ -33,6 +33,7 @@ public class InputHandler : MonoBehaviour
             if(hit)
             {
                 GameObject test = hit.collider.gameObject;
+                print(test.tag);
                 if(test.CompareTag("Bread"))
                 {
                     if(sandwichHandler.sandwichState == SandwichState.fresh)

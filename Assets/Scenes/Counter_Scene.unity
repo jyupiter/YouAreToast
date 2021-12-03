@@ -2088,7 +2088,7 @@ GameObject:
   - component: {fileID: 378693117}
   m_Layer: 0
   m_Name: Submit Toast button
-  m_TagString: Untagged
+  m_TagString: Submit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7769,7 +7769,7 @@ GameObject:
   - component: {fileID: 1125564681}
   m_Layer: 0
   m_Name: English Muffin Button
-  m_TagString: Untagged
+  m_TagString: Bread
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9249,7 +9249,7 @@ GameObject:
   - component: {fileID: 1336548595}
   m_Layer: 0
   m_Name: Brioche Button
-  m_TagString: Untagged
+  m_TagString: Bread
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10054,7 +10054,7 @@ GameObject:
   - component: {fileID: 1493829783}
   m_Layer: 0
   m_Name: Bagel Button
-  m_TagString: Untagged
+  m_TagString: Bread
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
