@@ -27,7 +27,7 @@ public class Level : MonoBehaviour
     {
         cm = gameObject.GetComponent<CustomerManager>();
         level = 1;
-        maxTimePerDay = 300f;
+        maxTimePerDay = 20f;
         currTime = maxTimePerDay;
         inKitchen = false;
 

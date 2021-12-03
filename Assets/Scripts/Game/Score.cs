@@ -2,12 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using static Order;
 using static SandwichHandler;
 
 public class Score : MonoBehaviour, IOnSandwichChangeStateEvent
 {
     public static int score = 0;
+    public TextMeshProUGUI finalScore;
+    [HideInInspector] public CustomerManager cm;
+    private void Awake()
+    {
+        cm = GameObject.Find("Scripts").GetComponent<CustomerManager>();
+    }
 
     public void UpdateSandwichState(SandwichHandler sandwichHandler)
     {
@@ -15,13 +22,16 @@ public class Score : MonoBehaviour, IOnSandwichChangeStateEvent
         {
             UpdateScore(sandwichHandler.sandwich);
             sandwichHandler.Reset();
-            //TODO: make customer do something
+            //Customer leaves after receiving sandwich
+            cm.HideThisCustomer();
+            //TODO: New customer needs to come in
         }
     }
 
     public void UpdateFinalScore()
     {
-        //TODO: set final score in end panel
+        //TODO score has been linked but this method is not used anywhere yet
+        finalScore.text = score.ToString();
     }
 
     private void UpdateScore(Sandwich sandwich)
