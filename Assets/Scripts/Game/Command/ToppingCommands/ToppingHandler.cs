@@ -33,6 +33,8 @@ public class ToppingHandler : MonoBehaviour
         }
     }
 
+    #region methods to link to buttons in the scene
+
     public void AddEgg()
     {
         IToppingCommand command = new AddEggCommand(sandwichHandler, this, Order.Topping.egg);
@@ -86,4 +88,6 @@ public class ToppingHandler : MonoBehaviour
         IToppingCommand command = new AddLettuceCommand(sandwichHandler, this, Order.Topping.lettuce);
         command.Execute();
     }
+
+    #endregion
 }

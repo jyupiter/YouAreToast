@@ -16,11 +16,10 @@ public class InputHandler : MonoBehaviour
     void Start()
     {
         sandwichHandler = GameObject.Find("Grill Station").GetComponent<SandwichHandler>();
-        // TODO: change string name^
 
-        StartToasting = new CStartToaster(this);
-        MoveBread = new CMoveBread(this);
-        SubmitSandWich = new CSubmitSandwich(this);
+        StartToasting = new StartToasterCommand(this);
+        MoveBread = new MoveBreadCommand(this);
+        SubmitSandWich = new SubmitSandwichCommand(this);
 
         commands = new Stack<ICommand>();
     }
