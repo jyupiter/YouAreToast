@@ -35,7 +35,7 @@ public class Sandwich : Container
         {
             case ToastLevel.untoasted:
                 toastLevel = ToastLevel.golden;
-                NotifyObservers("golded");
+                NotifyObservers("golden");
                 hasNextState = true;
                 break;
             case ToastLevel.golden:
@@ -61,7 +61,7 @@ public class Sandwich : Container
     private delegate void Notify(string msg);
     private static event Notify NotifyEvent;
 
-    public static void RegisterObserver(IOnReceiveNotificationEvent aObserver)
+    public static void RegisterNotificationObserver(IOnReceiveNotificationEvent aObserver)
     {
         NotifyEvent += aObserver.UpdateNotification;
     }
