@@ -8,6 +8,8 @@ TagManager:
   - Bread
   - Sandwich
   - Submit
+  - Scripts
+  - Customer
   layers:
   - Default
   - TransparentFX

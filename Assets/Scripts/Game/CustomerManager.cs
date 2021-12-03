@@ -120,7 +120,7 @@ public class CustomerManager : MonoBehaviour
             currentCustomerObject.SetActive(false);
         }
 
-        UpdatePatienceText();
+                UpdatePatienceText();
 
         SpriteRenderer[] parts = currentCustomerObject.GetComponentsInChildren<SpriteRenderer>();
         for(int i = 0; i < parts.Length; i++)

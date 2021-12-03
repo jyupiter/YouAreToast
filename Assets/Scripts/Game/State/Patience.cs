@@ -5,16 +5,15 @@ using TMPro;
 
 public class Patience : PatienceStates
 {
-    private int minPatience = 30;
-    private int maxPatience = 50;
+    private int minPatience = 40;
+    private int maxPatience = 80;
 
     public static float randomPatience;
     public static float currPatience;
 
     public void Awake()
     {
-        randomPatience = GameController.r.Next(minPatience, maxPatience);
-        currPatience = randomPatience;
+        ResetPatienceMeter();
     }
 
     private void Update() 
@@ -34,5 +33,10 @@ public class Patience : PatienceStates
                 CustomerImpatient();
             else
                 CustomerHappy();
+    }
+    public void ResetPatienceMeter()
+    {
+        randomPatience = GameController.r.Next(minPatience, maxPatience);
+        currPatience = randomPatience;
     }
 }

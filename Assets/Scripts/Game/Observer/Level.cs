@@ -24,12 +24,13 @@ public class Level : MonoBehaviour
     public GameObject endDayStats;
 
     public GameObject textCanvas;
+    public GameObject customerInfo;
 
     private void Start()
     {
         cm = gameObject.GetComponent<CustomerManager>();
         level = 1;
-        maxTimePerDay = 200f;
+        maxTimePerDay = 300f;
         currTime = maxTimePerDay;
         inKitchen = false;
 
@@ -46,7 +47,8 @@ public class Level : MonoBehaviour
         if (currTime <= 0)
         {
             dayHasEnded = true;
-            cm.StopCustomerSpawn();
+            customerInfo.SetActive(false);
+            cm.HideThisCustomer(); //TODO This causes customers to not spawn when restarted, but fixes end of day layering issues
             endDayStats.SetActive(true);
         }
     }
