@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CMoveBread : ICommand
+public class MoveBreadCommand : ICommand
 {
     private InputHandler inputHandler;
 
-    public CMoveBread(InputHandler thisScript)
+    public MoveBreadCommand(InputHandler thisScript)
     {
         inputHandler = thisScript;
     }

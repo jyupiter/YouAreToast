@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CSubmitSandwich : ICommand
+public class StartToasterCommand : ICommand
 {
-    private InputHandler inputHandler;
+    //
+    [HideInInspector] public InputHandler inputHandler;
 
-    public CSubmitSandwich(InputHandler thisScript)
+    public StartToasterCommand(InputHandler thisScript)
     {
         inputHandler = thisScript;
     }

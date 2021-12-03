@@ -22,7 +22,6 @@ public class Customer
         };
 
     private delegate void Notify(string message);
-    private event Notify NotificationEvent;
 
     #region constructors
 
@@ -77,9 +76,6 @@ public class Customer
     {
         this.order = order;
     }
-
-    //TODO: make patience actually do things
-    public void SetPatience() { }
 
     #endregion
 

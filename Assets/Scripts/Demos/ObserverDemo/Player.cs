@@ -13,7 +13,6 @@ namespace ObserverDemo
 
         //using delegate and event for observers
         private delegate void Notify(string msg);
-        private event Notify NotifyEvent;
 
         public Player(int initHp)
         {

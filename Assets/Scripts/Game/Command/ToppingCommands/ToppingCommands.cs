@@ -46,6 +46,8 @@ public abstract class AddToppingCommand
     }
 }
 
+#region individual topping commands, inheriting from the abstract parent
+
 public class AddEggCommand : AddToppingCommand, IToppingCommand
 {
     public AddEggCommand(SandwichHandler sandwichHandler, ToppingHandler toppingHandler, Topping topping) : base(sandwichHandler, toppingHandler, topping)
@@ -135,3 +137,5 @@ public class AddLettuceCommand : AddToppingCommand, IToppingCommand
         this.topping = topping;
     }
 }
+
+#endregion

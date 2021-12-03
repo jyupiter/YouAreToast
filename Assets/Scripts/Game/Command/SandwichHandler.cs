@@ -87,40 +87,34 @@ public class SandwichHandler : MonoBehaviour, IObserver
         return true;
     }
 
-    //TODO: add method to mark sandwich as complete
-
     public bool SubmitSandwich()
     {
-        //TODO: do something in Level.cs
-        Destroy(sandwichObject);
-        sandwichState = SandwichState.fresh;
+        //TODO: do scoring in level.cs
+        ResetSandwichHandler();
         return true;
     }
 
-    #region event system
-
-    private delegate void Notify(string msg);
-    private static event Notify NotifyEvent;
-
-    public static void RegisterObserver(IObserver aObserver)
+    public void ClearSandwichData()
     {
-        NotifyEvent += aObserver.Notify;
+        sandwich.ClearToppings();
+
+        List<GameObject> children = new List<GameObject>();
+
+        foreach(Transform t in sandwichObject.transform)
+            children.Add(t.gameObject);
+
+        UpdateToppingsSprites(sandwich, children);
     }
 
-    public static void UnregisterObserver(IObserver aObserver)
+    public void ResetSandwichHandler()
     {
-        NotifyEvent -= aObserver.Notify;
+        sandwich = null;
+        sandwichObject = null;
+        Destroy(sandwichObject);
+        sandwichState = SandwichState.fresh;
     }
 
-    private static void NotifyObservers(string aMsg)
-    {
-        NotifyEvent(aMsg);
-    }
-
-    void IObserver.Notify(string aMsg)
-    {
-        UpdateBreadSprite(sandwich, sandwichObject);
-    }
+    #region update sprites
 
     public void UpdateBreadSprite(Container container, GameObject targetGameObject)
     {
@@ -161,32 +155,31 @@ public class SandwichHandler : MonoBehaviour, IObserver
 
     #endregion
 
-    #region COMMAND FUCKERY
+    #region event system
 
-    /*
+    private delegate void Notify(string msg);
+    private static event Notify NotifyEvent;
 
-    //script references
-
-    public ICommand addTopping { get; set; }
-    public ICommand removeTopping { get; set; }
-    public ICommand resetToppings { get; set; }
-
-    public Stack<ICommand> commands = new Stack<ICommand>();
-
-    public void Start()
+    public static void RegisterObserver(IObserver aObserver)
     {
-        addTopping = new CAddTopping(this, sandwich);
-        removeTopping = new CRemoveTopping(sandwich);
-        resetToppings = new CResetToppings(sandwich);
+        NotifyEvent += aObserver.Notify;
     }
 
-    public void Update()
+    public static void UnregisterObserver(IObserver aObserver)
     {
-        // if(condition){ commandInput.Function; }
-        // if(condition){commandInput2.Function;}
+        NotifyEvent -= aObserver.Notify;
     }
 
-    */
+    private static void NotifyObservers(string aMsg)
+    {
+        NotifyEvent(aMsg);
+    }
+
+    void IObserver.Notify(string aMsg)
+    {
+        UpdateBreadSprite(sandwich, sandwichObject);
+    }
+
     #endregion
 
     public enum SandwichState

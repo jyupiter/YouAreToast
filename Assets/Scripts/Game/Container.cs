@@ -52,4 +52,9 @@ public abstract class Container
     {
         return toppings.Pop();
     }
+
+    public void ClearToppings()
+    {
+        toppings.Clear();
+    }
 }
