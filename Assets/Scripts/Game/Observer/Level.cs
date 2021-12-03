@@ -49,7 +49,7 @@ public class Level : MonoBehaviour
         {
             dayHasEnded = true;
             customerInfo.SetActive(false);
-            cm.HideThisCustomer(); //TODO This causes customers to not spawn when restarted, but fixes end of day layering issues
+            cm.HideThisCustomer();
             endDayStats.SetActive(true);
         }
     }
