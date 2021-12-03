@@ -5,8 +5,8 @@ using TMPro;
 
 public class Patience : PatienceStates
 {
-    private int minPatience = 50;
-    private int maxPatience = 90;
+    private int minPatience = 40;
+    private int maxPatience = 80;
 
     public static float randomPatience;
     public static float currPatience;

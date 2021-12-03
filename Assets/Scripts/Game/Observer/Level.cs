@@ -7,6 +7,8 @@ using TMPro;
 
 public class Level : MonoBehaviour
 {
+    CustomerManager cm;
+
     private int level;
     public TextMeshProUGUI displayDay;
 
@@ -23,6 +25,7 @@ public class Level : MonoBehaviour
 
     private void Start()
     {
+        cm = gameObject.GetComponent<CustomerManager>();
         level = 1;
         maxTimePerDay = 300f;
         currTime = maxTimePerDay;
@@ -40,6 +43,7 @@ public class Level : MonoBehaviour
         currTimeImage.fillAmount = currTime / maxTimePerDay;
         if (currTime <= 0)
         {
+            cm.HideThisCustomer();
             endDayStats.SetActive(true);
         }
     }
@@ -75,11 +79,9 @@ public class Level : MonoBehaviour
 
     }
 
-    public void NextLevel()
+    public void Menu()
     {
-        maxTimePerDay = 50f;
-        endDayStats.SetActive(false);
-        level++;
+        SceneManager.LoadScene("Menu");
     }
 
     public void RestartLevel()
