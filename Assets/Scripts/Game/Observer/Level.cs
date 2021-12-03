@@ -15,7 +15,8 @@ public class Level : MonoBehaviour
     public Image currTimeImage;
 
     public static bool inKitchen;
-    public GameObject kitchenPanel;
+    private bool inTooltip;
+    public GameObject kitchenPanel, tooltipPanel;
     public GameObject endDayStats;
 
     public GameObject textCanvas;
@@ -28,6 +29,7 @@ public class Level : MonoBehaviour
         inKitchen = false;
 
         kitchenPanel.SetActive(false);
+        tooltipPanel.SetActive(false);
         endDayStats.SetActive(false);
         displayDay.text = level.ToString();
     }
@@ -56,6 +58,20 @@ public class Level : MonoBehaviour
             textCanvas.SetActive(true);
             inKitchen = true;
         }
+    }
+    public void ToolTipButton()
+    {
+        if (!inTooltip && inKitchen)
+        {
+            tooltipPanel.SetActive(true);
+            inTooltip = true;
+        }
+        else
+        {
+            tooltipPanel.SetActive(false);
+            inTooltip = false;
+        }
+
     }
 
     public void NextLevel()
