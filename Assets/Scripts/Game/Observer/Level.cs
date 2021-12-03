@@ -59,6 +59,7 @@ public class Level : MonoBehaviour
             inKitchen = true;
         }
     }
+
     public void ToolTipButton()
     {
         if (!inTooltip && inKitchen)
@@ -80,6 +81,7 @@ public class Level : MonoBehaviour
         endDayStats.SetActive(false);
         level++;
     }
+
     public void RestartLevel()
     {
         SceneManager.LoadScene("Counter_Scene");

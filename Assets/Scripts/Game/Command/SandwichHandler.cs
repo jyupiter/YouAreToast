@@ -89,7 +89,9 @@ public class SandwichHandler : MonoBehaviour, IOnReceiveNotificationEvent, IOnSa
 
     public bool SubmitSandwich()
     {
-        //TODO: do scoring in score.cs
+        //ping class(es) watching for sandwich state change
+        UpdateSandwichState(sandwichState);
+
         ResetSandwichHandler();
         return true;
     }
@@ -172,6 +174,8 @@ public class SandwichHandler : MonoBehaviour, IOnReceiveNotificationEvent, IOnSa
 
     public void UpdateNotification(string aMsg)
     {
+        if(sandwichObject != null)
+            UpdateBreadSprite(sandwich, sandwichObject);
         NotifyMessageEvent(aMsg);
     }
 

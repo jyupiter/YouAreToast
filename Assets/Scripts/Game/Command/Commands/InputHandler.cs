@@ -32,18 +32,18 @@ public class InputHandler : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
             if(hit)
             {
-                string test = hit.collider.gameObject.name.ToLower();
-                if(test.Contains("button") && (test.Contains("brioche") || test.Contains("bagel") || test.Contains("english muffin")))
+                GameObject test = hit.collider.gameObject;
+                if(test.CompareTag("Bread"))
                 {
                     if(sandwichHandler.sandwichState == SandwichState.fresh)
                         StartToasting?.Execute();
                 }
-                else if(test.Contains("bread") && test.Contains("clone"))
+                else if(test.CompareTag("Sandwich"))
                 {
                     if(sandwichHandler.sandwichState == SandwichState.toasted)
                         MoveBread?.Execute();
                 }
-                else if(test.Contains("complete"))
+                else if(test.CompareTag("Submit"))
                 {
                     if(sandwichHandler.sandwichState == SandwichState.complete)
                         SubmitSandWich?.Execute();

@@ -10,12 +10,14 @@ public class GameController : MonoBehaviour
     public static System.Random r = new System.Random();
 
     public Notifier notifier;
+    public Score score;
 
     void Start()
     {
-        CustomerManager.RegisterObserver(notifier);
-        Sandwich.RegisterObserver(sandwichHandler);
+        CustomerManager.RegisterNotificationObserver(notifier);
+        Sandwich.RegisterNotificationObserver(sandwichHandler);
         SandwichHandler.RegisterNotificationObserver(notifier);
+        SandwichHandler.RegisterStateObserver(score);
 
         customerManager.StartCustomerSpawn();
     }
