@@ -18,18 +18,31 @@ public abstract class AddToppingCommand
 
     public void Execute()
     {
-        sandwichHandler.sandwich.AddTopping(topping);
+        Redo();
         toppingHandler.AddCommand((IToppingCommand) this);
     }
 
     public void Redo()
     {
         sandwichHandler.sandwich.AddTopping(topping);
+        Refresh();
     }
 
     public void Undo()
     {
         sandwichHandler.sandwich.RemoveTopping();
+        Refresh();
+    }
+
+    private void Refresh()
+    {
+        GameObject sandwichObject = sandwichHandler.sandwichObject;
+        List<GameObject> children = new List<GameObject>();
+
+        foreach(Transform t in sandwichObject.transform)
+            children.Add(t.gameObject);
+
+        sandwichHandler.UpdateToppingsSprites(sandwichHandler.sandwich, children);
     }
 }
 

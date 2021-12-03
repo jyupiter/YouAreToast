@@ -7,7 +7,7 @@ public class Sandwich : Container
 {
     private Order order = null;
 
-    public Sandwich(Order order, Bread bread, ToastLevel toastLevel)
+    public Sandwich(Order order, Bread bread, ToastLevel toastLevel) : base (bread, toastLevel)
     {
         this.order = order;
         this.bread = bread;
@@ -16,7 +16,7 @@ public class Sandwich : Container
 
     public bool AddTopping(Topping topping)
     {
-        toppings.Push(topping);
+        PushTopping(topping);
 
         if(order.GetToppings().Contains(topping))
             return true;
@@ -25,7 +25,7 @@ public class Sandwich : Container
 
     public Topping RemoveTopping()
     {
-        return toppings.Pop();
+        return PopTopping();
     }
 
     public bool IncreaseToastLevel()
@@ -82,7 +82,7 @@ public class Sandwich : Container
 
     public void SetCurrentToppings(Stack<Topping> currentToppings)
     {
-        this.toppings = currentToppings;
+        toppings = currentToppings;
     }
 
     #endregion

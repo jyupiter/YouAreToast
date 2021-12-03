@@ -42,4 +42,14 @@ public abstract class Container
     {
         return toppings;
     }
+
+    public void PushTopping(Topping topping)
+    {
+        toppings.Push(topping);
+    }
+
+    public Topping PopTopping()
+    {
+        return toppings.Pop();
+    }
 }
