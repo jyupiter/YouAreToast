@@ -55,6 +55,7 @@ public abstract class Container
 
     public void ClearToppings()
     {
-        toppings.Clear();
+        if(toppings.Count > 0)
+            toppings.Clear();
     }
 }

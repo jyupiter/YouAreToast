@@ -87,16 +87,16 @@ public class SandwichHandler : MonoBehaviour, IOnReceiveNotificationEvent, IOnSa
         return true;
     }
 
-    public bool SubmitSandwich()
+    public void SubmitSandwich()
     {
-        //ping class(es) watching for sandwich state change
-        UpdateSandwichState(sandwichState);
+        if(sandwichObject == null)
+            return;
 
-        ResetSandwichHandler();
-        return true;
+        UpdateSandwichState(this);
+        Reset();
     }
 
-    public void ClearSandwichData()
+    public void ClearSandwichToppings()
     {
         sandwich.ClearToppings();
 
@@ -108,12 +108,12 @@ public class SandwichHandler : MonoBehaviour, IOnReceiveNotificationEvent, IOnSa
         UpdateToppingsSprites(sandwich, children);
     }
 
-    public void ResetSandwichHandler()
+    public void Reset()
     {
         sandwich = null;
-        sandwichObject = null;
-        Destroy(sandwichObject);
         sandwichState = SandwichState.fresh;
+        Destroy(sandwichObject);
+        sandwichObject = null;
     }
 
     #region update sprites
@@ -179,7 +179,7 @@ public class SandwichHandler : MonoBehaviour, IOnReceiveNotificationEvent, IOnSa
         NotifyMessageEvent(aMsg);
     }
 
-    private delegate void NotifyState(SandwichState sandwichState);
+    private delegate void NotifyState(SandwichHandler sandwichHandler);
     private static event NotifyState NotifyStateEvent;
 
     public static void RegisterStateObserver(IOnSandwichChangeStateEvent aObserver)
@@ -192,9 +192,9 @@ public class SandwichHandler : MonoBehaviour, IOnReceiveNotificationEvent, IOnSa
         NotifyStateEvent -= aObserver.UpdateSandwichState;
     }
 
-    public void UpdateSandwichState(SandwichState sandwichState)
+    public void UpdateSandwichState(SandwichHandler sandwichHandler)
     {
-        NotifyStateEvent(sandwichState);
+        NotifyStateEvent(this);
     }
 
     #endregion
