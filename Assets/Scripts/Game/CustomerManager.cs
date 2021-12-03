@@ -10,6 +10,8 @@ public class CustomerManager : MonoBehaviour
     CustomerManager cm;
     SandwichHandler sandwichHandler;
 
+    public Score score;
+
     public static int preloadedCustomers = 15;
     public static bool hasCustomer = false;
 
@@ -31,6 +33,7 @@ public class CustomerManager : MonoBehaviour
     void Awake()
     {
         cm = gameObject.GetComponent<CustomerManager>();
+        PatienceStates.cm = this;
         sandwichHandler = GameObject.Find("Grill Station").GetComponent<SandwichHandler>();
     }
 
@@ -42,25 +45,43 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
+    private delegate void AnonymousMethod();
+    IEnumerator coroutine = null;
+
+    IEnumerator DoWithWait(float time, AnonymousMethod anon)
+    {
+        yield return new WaitForSeconds(time);
+        AnonymousMethod toRun = anon;
+        toRun();
+        StopCoroutine(coroutine);
+    }
+
     public void StartCustomerSpawn()
     {
         PopulateCustomers();
-
-        //TODO: delay first customer's appearance
-        if(hasCustomer == false)
-            ShowNextCustomer();
+        coroutine = DoWithWait(0f, delegate()
+        {
+            if(hasCustomer == false && Level.dayHasEnded == false)
+                ShowNextCustomer();
+        });
+        StartCoroutine(coroutine);
     }
 
-    public static void StopCustomerSpawn()
+    public void StopCustomerSpawn()
     {
         NotifyObservers("ending the day... all customers leaving");
 
-        customers.Clear();
         currentCustomer = null;
         hasCustomer = false;
 
+        customers.Clear();
+
         currentCustomerObject.SetActive(false);
-        currentCustomerObject = null;
+        //currentCustomerObject = null;
+
+        score.UpdateFinalScore();
+
+        sandwichHandler.Reset();
     }
 
     private Customer ChooseNextCustomer()
@@ -71,7 +92,7 @@ public class CustomerManager : MonoBehaviour
 
     private void ShowNextCustomer()
     {
-        NotifyObservers("next customer incoming (hopefully)");
+        NotifyObservers("next customer is here");
 
         Customer c = ChooseNextCustomer();
         currentCustomer = c;
@@ -114,7 +135,7 @@ public class CustomerManager : MonoBehaviour
 
     public void HideThisCustomer()
     {
-        NotifyObservers("this customer is leaving now");
+        NotifyObservers("this customer is leaving");
 
         currentCustomerObject.SetActive(false);
         customerInfoContainer.SetActive(false);
@@ -126,6 +147,15 @@ public class CustomerManager : MonoBehaviour
         }
         hasCustomer = false;
         sandwichHandler.Reset();
+
+        if(Level.dayHasEnded == false)
+        {
+            coroutine = DoWithWait(3f, delegate ()
+            {
+                ShowNextCustomer();
+            });
+            StartCoroutine(coroutine);
+        }
     }
 
     public void UpdatePatienceText()
