@@ -2988,6 +2988,7 @@ MonoBehaviour:
   tooltipPanel: {fileID: 1220164867}
   endDayStats: {fileID: 1242232915}
   textCanvas: {fileID: 835143332}
+  toastLevelText: {fileID: 33500415}
   customerInfo: {fileID: 1336745450}
 --- !u!114 &491854686
 MonoBehaviour:
