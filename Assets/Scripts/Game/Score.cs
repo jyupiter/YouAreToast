@@ -31,7 +31,6 @@ public class Score : MonoBehaviour, IOnSandwichChangeStateEvent
 
     public void UpdateFinalScore()
     {
-        //TODO score has been linked but this method is not used anywhere yet
         finalScore.text = score.ToString();
     }
 

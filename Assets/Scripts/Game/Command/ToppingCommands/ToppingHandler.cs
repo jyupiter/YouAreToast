@@ -17,6 +17,8 @@ public class ToppingHandler : MonoBehaviour
 
     public void IterateCommands(bool undo)
     {
+        if(toppingCommands.Count < 1)
+            return;
         if(undo == true)
         {
             toppingCommands[index].Undo();
