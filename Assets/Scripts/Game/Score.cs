@@ -24,7 +24,6 @@ public class Score : MonoBehaviour, IOnSandwichChangeStateEvent
         {
             UpdateScore(sandwichHandler.sandwich);
             sandwichHandler.Reset();
-            //Customer leaves after receiving sandwich
             cm.HideThisCustomer();
         }
     }
