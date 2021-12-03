@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PatienceStates : MonoBehaviour, ICustomerStates
 {
-    public SpriteRenderer expression;
+    [HideInInspector] public SpriteRenderer expression;
     [HideInInspector] public CustomerManager cm;
     private void Awake()
     {
